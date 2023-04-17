@@ -41,13 +41,13 @@ Terminal themed arcade to showcase various games I've built while learning html,
   - intro banner
   - command prompt
   - commands
-    - help {context} (list of commands)
-    - about {context} (description)
-    - whoami {context} (default:guest, alt:login) 
-    - socail (link menu)
-    - clear (clears terminal & history)
-    - play (pick game menu)
-    - exit (exit game)
+    - **help** {context} (list of commands)
+    - **about** {context} (description)
+    - **whoami** {context} (default:guest, alt:login) 
+    - **socail** (link menu)
+    - **clear** (clears terminal & history)
+    - **play** (pick game menu)
+    - **exit** (exit game)
 - [ ] game statistics / leaderboard
 - [ ] implement database for leaderboard
 - [ ] allow user login
