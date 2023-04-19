@@ -1,12 +1,19 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
   /* colors */
   --bg: rgb(40, 40, 40);
-  --text: rgb(245, 245, 220);
+  --text: rgb(207, 207, 186);
   --prompt: rgb(125, 98, 206);
   --cmd: rgb(115, 171, 173);
   --error: rgb(224, 122, 95);
+  --alt: rgb(129, 129, 129);
 }
 
 body,
@@ -14,4 +21,21 @@ pre {
   background-color: var(--bg);
   font-family: var(--font-main);
   color: var(--text);
+}
+pre {
+  color: var(--cmd);
+  font-weight: 700;
+}
+
+/* command prompt */
+.prompt {
+  color: var(--prompt);
+  font-weight: 700;
+  margin: 10px 0 10px 0;
+}
+span {
+  color: var(--cmd);
+}
+.alt {
+  color: var(--alt);
 }
