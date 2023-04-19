@@ -1,3 +1,17 @@
 :root {
-  --font-main: 'Fira Code'; /* weights: 400, 700 */
+  /* fonts */
+  --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
+  /* colors */
+  --bg: rgb(40, 40, 40);
+  --text: rgb(245, 245, 220);
+  --prompt: rgb(125, 98, 206);
+  --cmd: rgb(115, 171, 173);
+  --error: rgb(224, 122, 95);
+}
+
+body,
+pre {
+  background-color: var(--bg);
+  font-family: var(--font-main);
+  color: var(--text);
 }
