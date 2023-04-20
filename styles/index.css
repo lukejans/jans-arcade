@@ -1,9 +1,4 @@
-/* reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* setup */
 :root {
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
@@ -15,18 +10,47 @@
   --error: rgb(224, 122, 95);
   --alt: rgb(129, 129, 129);
 }
-
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  background-color: transparent;
+  position: absolute;
+  left: -1000px;
+}
+::selection {
+  color: var(--cmd);
+  background-color: var(--prompt);
+}
+::-moz-selection {
+  color: var(--cmd);
+  background-color: var(--prompt);
+}
+/* layout */
+main {
+  margin: 15px;
+}
 body,
 pre {
   background-color: var(--bg);
   font-family: var(--font-main);
+  font-size: 15px;
   color: var(--text);
 }
 pre {
   color: var(--cmd);
   font-weight: 700;
 }
-
 /* command prompt */
 .prompt {
   color: var(--prompt);
@@ -38,4 +62,18 @@ span {
 }
 .alt {
   color: var(--alt);
+}
+.caret {
+  background-color: var(--prompt);
+}
+/* command line */
+.command-line {
+  font-weight: 700;
+  color: var(--cmd);
+}
+.command {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
 }

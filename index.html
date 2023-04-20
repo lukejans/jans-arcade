@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/index.css" />
     <!-- JavaScript -->
     <script defer src="./js/commands.js"></script>
+    <script defer src="./js/command-line.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -36,7 +37,7 @@
            _.-\_/-._
         _ / |     | \ _
        / /   `---'   \ \              __                    ___                        __   
-      /  `-----------'  \            / /___ _____  _____   /   |  _____ ____ ___  ____/ /__ 
+      /  `-----------'  \            / /___  ____  _____   /   |  _____ ____ ___  ____/ /__ 
      /,-""-.       ,-""-.\      __  / / __ `/ __ \/ ___/  / /| | / ___/ ___/ __ `/ __  / _ \
     ( i-..-i       i-..-i )    / /_/ / /_/ / / / (__  )  / ___ |/ /  / /__/ /_/ / /_/ /  __/
     |`|    |-------|    |'|    \____/\__,_/_/ /_/____/  /_/  |_/_/   \___/\__,_/\__,_/\___/ 
@@ -44,22 +45,28 @@
      `--------|=|-------'
               | |___________________________________________________________________________             
               \____________________________________________________________________________/  
-  
   </pre
         >
         <p>Welcome to my interactive arcade terminal.</p>
-        <p>Type <span>'help'</span> for a list of available commands.</p>
+        <p>Type <span>[help]</span> for a list of available commands.</p>
       </section>
 
       <section class="command">
         <p class="prompt">
           <span>guest</span><span class="alt">@</span>jansarcade<span
             class="alt"
-            >: ~ $</span
-          >
+            >: ~ $
+          </span>
         </p>
         <p class="command-line"></p>
-        <div class="carret"></div>
+        <!-- test<span class="caret"> </span>test -->
+        <!-- <div class="caret"></div> -->
+        <textarea
+          type="text"
+          id="type"
+          aria-hidden="true"
+          oninput="cliDisplayInput()"
+          autofocus></textarea>
       </section>
     </main>
   </body>
