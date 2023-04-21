@@ -71,6 +71,7 @@ function addLine(text, style, time) {
     let next = document.createElement('p');
     next.innerHTML = t;
     next.className = style;
+    // next.classList.add('typing');
 
     before.parentNode.insertBefore(next, before);
 
@@ -82,4 +83,18 @@ function loopLines(name, style, time) {
   name.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
+}
+let phrase = 'test';
+let currentPhrase = [];
+let i = 0;
+function typeText(context) {
+  context.innerHTML = currentPhrase.join('');
+  if (i < phrase.length) {
+    currentPhrase.push(phrase[i]);
+    i++;
+    setTimeout(typeText, 20);
+  } else {
+    i = 0;
+    currentPhrase = [];
+  }
 }
