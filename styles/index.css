@@ -26,7 +26,7 @@ textarea {
   resize: none;
   background-color: transparent;
   position: absolute;
-  /* left: -1000px;s */
+  left: -1000px;
 }
 ::selection {
   color: var(--cmd);
