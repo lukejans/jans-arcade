@@ -45,26 +45,29 @@ main {
   justify-content: center;
   min-width: 100vw;
 }
-body,
-pre {
+body {
   background-color: var(--bg);
   font-family: var(--font-main);
   font-size: 15px;
   color: var(--text);
 }
-pre {
+.banner {
   color: var(--cmd);
   font-weight: 700;
 }
-
+.text {
+  color: var(--text);
+  font-weight: 400;
+}
 /* command prompt */
 .prompt {
   color: var(--prompt);
   font-weight: 700;
   margin: 10px 0 10px 0;
 }
-span {
+.cmds {
   color: var(--cmd);
+  font-weight: 700;
 }
 .alt {
   color: var(--alt);
