@@ -26,7 +26,7 @@ textarea {
   resize: none;
   background-color: transparent;
   position: absolute;
-  left: -1000px;
+  /* left: -1000px;s */
 }
 ::selection {
   color: var(--cmd);
@@ -39,6 +39,11 @@ textarea {
 /* layout */
 main {
   margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 100vw;
 }
 body,
 pre {
@@ -51,6 +56,7 @@ pre {
   color: var(--cmd);
   font-weight: 700;
 }
+
 /* command prompt */
 .prompt {
   color: var(--prompt);
@@ -63,17 +69,30 @@ span {
 .alt {
   color: var(--alt);
 }
+/* caret */
 .caret {
   background-color: var(--prompt);
+  width: 11px;
+  height: 20px;
+  position: relative;
+  left: 0px;
+}
+.blink {
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 /* command line */
-.command-line {
-  font-weight: 700;
-  color: var(--cmd);
-}
 .command {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 5px;
+}
+.command-line {
+  font-weight: 700;
+  color: var(--cmd);
+  margin-left: 5px;
 }
