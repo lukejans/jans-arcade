@@ -103,10 +103,9 @@ body {
 pre {
   display: block;
   line-height: 1.3em;
-  margin: 0;
   overflow: hidden;
   white-space: nowrap;
-  letter-spacing: 0.05em;
+  font-family: var(--font-main);
   animation: typing 0.5s steps(30, end);
 }
 @keyframes typing {
