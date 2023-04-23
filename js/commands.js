@@ -22,6 +22,10 @@ banner = [
   '<span class="text">Type <span class="cmds">[help]</span> for a list of available commands.</span>',
 ];
 
+prompt = [
+  '<span class="prompt"><span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $</span></span>',
+];
+
 // CONSOLE ART
 console.log(
   `       __                    ___                        __ \n      / /___ _____  _____   /   |  ______________  ____/ /__    \n __  / / __ \\/ __ \\/ ___/  / /| | / ___/ ___/ __ \\/ __  / _ \\ \n/ /_/ / /_/ / / / (__  )  / ___ |/ /  / /__/ /_/ / /_/ /  __/ \n\\____/\\__,_/_/ /_/____/  /_/  |_/_/   \\___/\\__/_/\\__,_/\\___/ `
