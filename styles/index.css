@@ -75,7 +75,7 @@ body {
 /* caret */
 .caret {
   background-color: var(--prompt);
-  width: 11px;
+  width: 10px;
   height: 20px;
   position: relative;
   left: 0px;
