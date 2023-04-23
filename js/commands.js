@@ -1,5 +1,4 @@
 banner = [
-  '<span class="prompt"><span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $</span></span>',
   '              ___',
   '            ,"---".',
   '            :     ;',

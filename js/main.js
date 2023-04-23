@@ -68,7 +68,7 @@ function addLine(text, style, time) {
     }
   }
   setTimeout(function () {
-    let next = document.createElement('p');
+    let next = document.createElement('pre');
     next.innerHTML = t;
     next.className = style;
 
