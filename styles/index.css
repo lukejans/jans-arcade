@@ -51,6 +51,7 @@ body {
   font-size: 15px;
   color: var(--text);
 }
+/* TEXT STYLING START */
 .banner {
   color: var(--cmd);
   font-weight: 700;
@@ -59,11 +60,13 @@ body {
   color: var(--text);
   font-weight: 400;
 }
-/* command prompt */
 .prompt {
   color: var(--prompt);
   font-weight: 700;
   margin: 10px 0 10px 0;
+}
+.error {
+  color: var(--error);
 }
 .cmds {
   color: var(--cmd);
@@ -72,7 +75,9 @@ body {
 .alt {
   color: var(--alt);
 }
-/* caret */
+/* TEXT STYLING END */
+
+/* CARET START */
 .caret {
   background-color: var(--prompt);
   width: 10px;
@@ -88,7 +93,9 @@ body {
     opacity: 0;
   }
 }
-/* command line */
+/* CARET END */
+
+/* COMMAND LINE START */
 .command {
   display: flex;
   justify-content: flex-start;
@@ -99,7 +106,9 @@ body {
   color: var(--cmd);
   margin-left: 5px;
 }
-/* type text */
+/* COMMAND LINE END */
+
+/* OUTPUT TEXT ANIMATION START */
 pre {
   display: block;
   line-height: 1.3em;
@@ -116,3 +125,4 @@ pre {
     width: 100%;
   }
 }
+/* OUTPUT TEXT ANIMATION END */
