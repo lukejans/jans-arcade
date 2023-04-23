@@ -7,6 +7,7 @@
 */
 // display intro output
 setTimeout(function () {
+  printPrompt(' ', ' ');
   loopLines(banner, 'banner', 80);
   INPUT.focus();
 }, 100);
@@ -52,8 +53,6 @@ function loopLines(name, style, time) {
     addLine(item, style, index * time);
   });
 }
-// print prompt on each output
-function printPrompt(context = '') {}
 /*
     CARET
 
@@ -135,4 +134,12 @@ function commander(cmd) {
       );
       break;
   }
+}
+// print prompt on output
+
+function printPrompt(style, cmd) {
+  let prompt = document.createElement('p');
+  prompt.innerHTML = `<span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${style}">${cmd}</span></span>`;
+  prompt.className = 'prompt';
+  before.parentNode.insertBefore(prompt, before);
 }

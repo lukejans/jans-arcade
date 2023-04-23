@@ -1,4 +1,4 @@
-banner = [
+let banner = [
   '              ___',
   '            ,"---".',
   '            :     ;',
@@ -20,10 +20,6 @@ banner = [
   '<br>',
   '<span class="text">Welcome to my interactive arcade terminal.</span>',
   '<span class="text">Type <span class="cmds">[help]</span> for a list of available commands.</span>',
-];
-
-prompt = [
-  '<span class="prompt"><span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $</span></span>',
 ];
 
 // CONSOLE ART
