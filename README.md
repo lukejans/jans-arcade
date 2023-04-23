@@ -38,10 +38,10 @@ Terminal themed arcade to showcase various games I've built while learning html,
 
 ### TODO
 
-- [ ] implement terminal design concepts from figma
+- [x] implement terminal design concepts from figma
 - [ ] create game components
   - (SPA) toggle games with commands
-- [ ] create objects for terminal functionality
+- [ ] create arrays for terminal functionality
   - intro banner
   - command prompt
   - commands
