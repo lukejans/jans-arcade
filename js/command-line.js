@@ -7,7 +7,7 @@
 */
 // display intro output
 setTimeout(function () {
-  printPrompt(' ', ' ');
+  printPrompt('');
   loopLines(banner, 'banner', 80);
   INPUT.focus();
 }, 100);
@@ -69,6 +69,10 @@ window.addEventListener('keydown', function (e) {
     e.preventDefault();
   } else if (e.key === 'Enter') {
     e.preventDefault();
+    printPrompt(INPUT.value);
+    commander(INPUT.value);
+    INPUT.value = '';
+    cliDisplayInput();
   } else if (e.key === 'ArrowLeft' && movesLeft !== 0) {
     movesRight++;
     movesLeft = INPUT.value.length - movesRight;
@@ -86,58 +90,63 @@ window.addEventListener('keydown', function (e) {
 */
 function commander(cmd) {
   switch (cmd.toLowerCase()) {
-    case 'help':
-      loopLines(help, 'color2 margin', 80);
-      break;
-    case 'whoami':
-      loopLines(whoami, 'color2 margin', 80);
-      break;
-    case 'social':
-      loopLines(social, 'color2 margin', 80);
-      break;
-    case 'projects':
-      loopLines(projects, 'color2 margin', 80);
-      break;
-    case 'history':
-      addLine('<br>', '', 0);
-      loopLines(commands, 'color2', 80);
-      addLine('<br>', 'command', 80 * commands.length + 50);
-      break;
-    case 'clear':
-      setTimeout(function () {
-        terminal.innerHTML = '<a id="before"></a>';
-        before = document.getElementById('before');
-      }, 1);
-      break;
     case 'banner':
-      loopLines(banner, '', 80);
+      loopLines(banner, 'banner', 80);
       break;
-    // socials
-    case 'twitter':
-      addLine('Opening Twitter...', 'color2', 0);
-      newTab(twitter);
+    case 'help':
+      loopLines(help, '', 80);
       break;
-    case 'linkedin':
-      addLine('Opening LinkedIn...', 'color2', 0);
-      newTab(linkedin);
+    case 'about':
+      loopLines(about, '', 80);
       break;
-    case 'github':
-      addLine('Opening GitHub...', 'color2', 0);
-      newTab(github);
-      break;
-    // not a command
-    default:
-      addLine(
-        '<span class="inherit">Command not found. For a list of commands, type <span class="command">\'help\'</span>.</span>',
-        'error',
-        100
-      );
-      break;
+    // case 'social':
+    //   loopLines(social, 'color2 margin', 80);
+    //   break;
+    // case 'projects':
+    //   loopLines(projects, 'color2 margin', 80);
+    //   break;
+    // case 'history':
+    //   addLine('<br>', '', 0);
+    //   loopLines(commands, 'color2', 80);
+    //   addLine('<br>', 'command', 80 * commands.length + 50);
+    //   break;
+    // case 'clear':
+    //   setTimeout(function () {
+    //     terminal.innerHTML = '<a id="before"></a>';
+    //     before = document.getElementById('before');
+    //   }, 1);
+    //   break;
+    // // socials
+    // case 'twitter':
+    //   addLine('Opening Twitter...', 'color2', 0);
+    //   newTab(twitter);
+    //   break;
+    // case 'linkedin':
+    //   addLine('Opening LinkedIn...', 'color2', 0);
+    //   newTab(linkedin);
+    //   break;
+    // case 'github':
+    //   addLine('Opening GitHub...', 'color2', 0);
+    //   newTab(github);
+    //   break;
+    // // not a command
+    // default:
+    //   addLine(
+    //     '<span class="inherit">Command not found. For a list of commands, type <span class="command">\'help\'</span>.</span>',
+    //     'error',
+    //     100
+    //   );
+    //   break;
   }
 }
 // print prompt on output
-
-function printPrompt(style, cmd) {
+function printPrompt(cmd) {
+  let style = '';
+  if (isValidCommand(INPUT.value)) {
+    style = 'cmds';
+  } else {
+    style = 'error';
+  }
   let prompt = document.createElement('p');
   prompt.innerHTML = `<span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${style}">${cmd}</span></span>`;
   prompt.className = 'prompt';
