@@ -29,11 +29,11 @@ textarea {
   left: -1000px;
 }
 ::selection {
-  color: var(--cmd);
+  color: var(--bg);
   background-color: var(--prompt);
 }
 ::-moz-selection {
-  color: var(--cmd);
+  color: var(--bg);
   background-color: var(--prompt);
 }
 /* layout */
@@ -74,6 +74,16 @@ body {
 }
 .alt {
   color: var(--alt);
+}
+a {
+  text-decoration: underline;
+  color: var(--cmd);
+  font-weight: 700;
+}
+a:hover {
+  color: var(--bg);
+  background-color: var(--prompt);
+  cursor: pointer;
 }
 /* TEXT STYLING END */
 
