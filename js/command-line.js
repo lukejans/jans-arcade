@@ -114,21 +114,17 @@ function commander(cmd) {
       addLine('Opening GitHub...', '', 0);
       newTab(github);
       break;
-    // case 'projects':
-    //   loopLines(projects, ' margin', 80);
-    //   break;
     // case 'history':
     //   addLine('<br>', '', 0);
     //   loopLines(commands, '', 80);
     //   addLine('<br>', 'command', 80 * commands.length + 50);
     //   break;
-    // case 'clear':
-    //   setTimeout(function () {
-    //     terminal.innerHTML = '<a id="before"></a>';
-    //     before = document.getElementById('before');
-    //   }, 1);
-    //   break;
-    // socials
+    case 'clear':
+      setTimeout(function () {
+        terminal.innerHTML = '<a id="before"></a>';
+        before = document.getElementById('before');
+      }, 1);
+      break;
 
     // // not a command
     // default:
@@ -148,14 +144,10 @@ function newTab(link) {
 }
 // print prompt on output
 function printPrompt(cmd) {
-  let style = '';
-  if (isValidCommand(INPUT.value)) {
-    style = 'cmds';
-  } else {
-    style = 'error';
-  }
   let prompt = document.createElement('p');
-  prompt.innerHTML = `<span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${style}">${cmd}</span></span>`;
+  prompt.innerHTML = `<span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${isValidCommand(
+    INPUT.value
+  )}">${cmd}</span></span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
 }

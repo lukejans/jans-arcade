@@ -61,14 +61,22 @@ const commandList = [
   'banner',
   'help',
   'about',
+  'clear',
+  'history',
   'social',
   'github',
   'linkedin',
   'twitter',
 ];
-// check input validity
+// style input validity
 function isValidCommand(textInput) {
-  return commandList.includes(textInput);
+  let style = '';
+  if (commandList.includes(textInput)) {
+    style = 'cmds';
+  } else {
+    style = 'error';
+  }
+  return style;
 }
 // CONSOLE ART
 console.log(
