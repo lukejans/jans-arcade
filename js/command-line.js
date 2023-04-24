@@ -16,6 +16,7 @@ let before = document.getElementById('before'); // changes on clear cmd
 const CLI = document.querySelector('.command-line');
 const INPUT = document.getElementById('type');
 const CARET = document.querySelector('.caret');
+const TERMINAL = document.querySelector('.terminal');
 // focus on textarea (INPUT)
 window.addEventListener('click', function (event) {
   if (event.target !== INPUT) {
@@ -70,7 +71,7 @@ window.addEventListener('keydown', function (e) {
   } else if (e.key === 'Enter') {
     e.preventDefault();
     printPrompt(INPUT.value);
-    commander(INPUT.value);
+    commandOutput(INPUT.value);
     INPUT.value = '';
     cliDisplayInput();
   } else if (e.key === 'ArrowLeft' && movesLeft !== 0) {
@@ -88,7 +89,7 @@ window.addEventListener('keydown', function (e) {
 
     valid commands to run on input
 */
-function commander(cmd) {
+function commandOutput(cmd) {
   switch (cmd.toLowerCase()) {
     case 'banner':
       loopLines(banner, 'banner', 80);
@@ -121,19 +122,17 @@ function commander(cmd) {
     //   break;
     case 'clear':
       setTimeout(function () {
-        terminal.innerHTML = '<a id="before"></a>';
+        TERMINAL.innerHTML = '<a id="before"></a>';
         before = document.getElementById('before');
       }, 1);
       break;
-
-    // // not a command
-    // default:
-    //   addLine(
-    //     '<span class="inherit">Command not found. For a list of commands, type <span class="command">\'help\'</span>.</span>',
-    //     'error',
-    //     100
-    //   );
-    //   break;
+    default:
+      addLine(
+        'Command not found. For a list of available commands type <span class="cmds">[help]</span>.',
+        '',
+        100
+      );
+      break;
   }
 }
 // open links
