@@ -28,15 +28,15 @@ const banner = [
 ];
 const help = [
   '<br>',
+  '<span class="cmds">play</span>          show games menu',
   '<span class="cmds">about</span>         project description',
   '<span class="cmds">help</span>          list of available commands',
-  '<span class="cmds">banner</span>        print arcade banner',
-  '<span class="cmds">social</span>        links to social media accounts',
+  '<span class="cmds">social</span>        links to social media',
   '<span class="cmds">clear</span>         clear screen & command history',
   '<span class="cmds">history</span>       display command history',
+  '<span class="cmds">banner</span>        display arcade header',
   '<br>',
 ];
-
 const about = [
   '<br>',
   '<span class="alt">Alpha Build</span>',
@@ -45,9 +45,27 @@ const about = [
   'This is an early stage version of the terminal.',
   '<br>',
 ];
+const social = [
+  '<br>',
+  '<span class="cmds">github</span>        <a href="https://github.com/lukejans">github/lukejans</a>',
+  '<span class="cmds">linkedin</span>      <a href="https://www.linkedin.com/in/luke-janssen-96592a245/">linkedin/lukejanssen</a>',
+  '<span class="cmds">twitter</span>       <a href="https://twitter.com/lukejanss">twitter/lukejanss</a>',
+  '<br>',
+];
+let github = 'https://github.com/lukejans';
+let linkedin = 'https://www.linkedin.com/in/luke-janssen-96592a245/';
+let twitter = 'https://twitter.com/lukejanss';
 
 // list of commands
-const commandList = ['banner', 'help', 'about', ''];
+const commandList = [
+  'banner',
+  'help',
+  'about',
+  'social',
+  'github',
+  'linkedin',
+  'twitter',
+];
 // check input validity
 function isValidCommand(textInput) {
   return commandList.includes(textInput);

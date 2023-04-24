@@ -99,15 +99,27 @@ function commander(cmd) {
     case 'about':
       loopLines(about, '', 80);
       break;
-    // case 'social':
-    //   loopLines(social, 'color2 margin', 80);
-    //   break;
+    case 'social':
+      loopLines(social, '', 80);
+      break;
+    case 'twitter':
+      addLine('Opening Twitter...', '', 0);
+      newTab(twitter);
+      break;
+    case 'linkedin':
+      addLine('Opening LinkedIn...', '', 0);
+      newTab(linkedin);
+      break;
+    case 'github':
+      addLine('Opening GitHub...', '', 0);
+      newTab(github);
+      break;
     // case 'projects':
-    //   loopLines(projects, 'color2 margin', 80);
+    //   loopLines(projects, ' margin', 80);
     //   break;
     // case 'history':
     //   addLine('<br>', '', 0);
-    //   loopLines(commands, 'color2', 80);
+    //   loopLines(commands, '', 80);
     //   addLine('<br>', 'command', 80 * commands.length + 50);
     //   break;
     // case 'clear':
@@ -116,19 +128,8 @@ function commander(cmd) {
     //     before = document.getElementById('before');
     //   }, 1);
     //   break;
-    // // socials
-    // case 'twitter':
-    //   addLine('Opening Twitter...', 'color2', 0);
-    //   newTab(twitter);
-    //   break;
-    // case 'linkedin':
-    //   addLine('Opening LinkedIn...', 'color2', 0);
-    //   newTab(linkedin);
-    //   break;
-    // case 'github':
-    //   addLine('Opening GitHub...', 'color2', 0);
-    //   newTab(github);
-    //   break;
+    // socials
+
     // // not a command
     // default:
     //   addLine(
@@ -138,6 +139,12 @@ function commander(cmd) {
     //   );
     //   break;
   }
+}
+// open links
+function newTab(link) {
+  setTimeout(function () {
+    window.open(link, '_blank');
+  }, 500);
 }
 // print prompt on output
 function printPrompt(cmd) {
