@@ -3,8 +3,8 @@
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
   /* colors */
-  --bg: rgb(40, 40, 40);
-  --text: rgb(207, 207, 186);
+  --bg: rgb(21, 21, 21);
+  --text: rgb(227, 218, 208);
   --prompt: rgb(125, 98, 206);
   --cmd: rgb(115, 171, 173);
   --error: rgb(224, 122, 95);
@@ -77,8 +77,7 @@ body {
 }
 a {
   text-decoration: underline;
-  color: var(--cmd);
-  font-weight: 700;
+  color: var(--text);
 }
 a:hover {
   color: var(--bg);
