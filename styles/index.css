@@ -115,6 +115,9 @@ a:hover {
   color: var(--cmd);
   margin-left: 5px;
 }
+.notValid {
+  color: var(--error);
+}
 /* COMMAND LINE END */
 
 /* OUTPUT TEXT ANIMATION START */
