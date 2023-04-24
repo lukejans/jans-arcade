@@ -26,6 +26,7 @@ window.addEventListener('click', function (event) {
 // update command line with input
 function cliDisplayInput() {
   CLI.textContent = INPUT.value;
+  liveValidCommand(INPUT.value);
 }
 // create elements with text then add to dom
 function addLine(text, style, time) {
@@ -70,6 +71,7 @@ window.addEventListener('keydown', function (e) {
     e.preventDefault();
   } else if (e.key === 'Enter') {
     e.preventDefault();
+    commandHistory.push(INPUT.value);
     printPrompt(INPUT.value);
     commandOutput(INPUT.value);
     INPUT.value = '';
@@ -115,16 +117,13 @@ function commandOutput(cmd) {
       addLine('Opening GitHub...', '', 0);
       newTab(github);
       break;
-    // case 'history':
-    //   addLine('<br>', '', 0);
-    //   loopLines(commands, '', 80);
-    //   addLine('<br>', 'command', 80 * commands.length + 50);
-    //   break;
+    case 'history':
+      addLine('<br>', '', 0);
+      loopLines(commandHistory, 'cmds', 80);
+      addLine('<br>', '', 0);
+      break;
     case 'clear':
-      setTimeout(function () {
-        TERMINAL.innerHTML = '<a id="before"></a>';
-        before = document.getElementById('before');
-      }, 1);
+      clearScreen();
       break;
     default:
       addLine(
@@ -134,6 +133,15 @@ function commandOutput(cmd) {
       );
       break;
   }
+}
+// command history
+let commandHistory = [];
+// clear the terminal
+function clearScreen() {
+  setTimeout(function () {
+    TERMINAL.innerHTML = '<a id="before"></a>';
+    before = document.getElementById('before');
+  }, 1);
 }
 // open links
 function newTab(link) {
@@ -149,4 +157,21 @@ function printPrompt(cmd) {
   )}">${cmd}</span></span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
+}
+// style input validity
+function isValidCommand(textInput) {
+  let style = '';
+  if (commandList.includes(textInput)) {
+    style = 'cmds';
+  } else {
+    style = 'error';
+  }
+  return style;
+}
+function liveValidCommand(textInput) {
+  if (isValidCommand(textInput) === 'error') {
+    CLI.classList.add('notValid');
+  } else {
+    CLI.classList.remove('notValid');
+  }
 }

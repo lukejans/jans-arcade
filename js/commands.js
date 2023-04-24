@@ -32,7 +32,7 @@ const help = [
   '<span class="cmds">about</span>         project description',
   '<span class="cmds">help</span>          list of available commands',
   '<span class="cmds">social</span>        links to social media',
-  '<span class="cmds">clear</span>         clear screen & command history',
+  '<span class="cmds">clear</span>         clear the screen',
   '<span class="cmds">history</span>       display command history',
   '<span class="cmds">banner</span>        display arcade header',
   '<br>',
@@ -63,21 +63,16 @@ const commandList = [
   'about',
   'clear',
   'history',
+  'play',
+  // play sub commands
+  'rps',
+  'xo',
   'social',
+  // social sub commands
   'github',
   'linkedin',
   'twitter',
 ];
-// style input validity
-function isValidCommand(textInput) {
-  let style = '';
-  if (commandList.includes(textInput)) {
-    style = 'cmds';
-  } else {
-    style = 'error';
-  }
-  return style;
-}
 // CONSOLE ART
 console.log(
   `       __                    ___                        __ \n      / /___ _____  _____   /   |  ______________  ____/ /__    \n __  / / __ \\/ __ \\/ ___/  / /| | / ___/ ___/ __ \\/ __  / _ \\ \n/ /_/ / /_/ / / / (__  )  / ___ |/ /  / /__/ /_/ / /_/ /  __/ \n\\____/\\__,_/_/ /_/____/  /_/  |_/_/   \\___/\\__/_/\\__,_/\\___/ `
