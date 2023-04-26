@@ -1,4 +1,4 @@
-/* setup */
+/* SETUP START */
 :root {
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
@@ -10,7 +10,9 @@
   --error: rgb(208, 97, 97);
   --alt: rgb(129, 129, 129);
 }
-/* reset */
+/* SETUP END */
+
+/* RESET START */
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +38,9 @@ textarea {
   color: var(--bg);
   background-color: var(--prompt);
 }
-/* layout */
+/* RESET END */
+
+/* LAYOUT START */
 main {
   margin: 15px;
   display: flex;
@@ -51,6 +55,8 @@ body {
   font-size: 15px;
   color: var(--text);
 }
+/* LAYOUT END */
+
 /* TEXT STYLING START */
 .banner {
   color: var(--cmd);
@@ -138,3 +144,14 @@ pre {
   }
 }
 /* OUTPUT TEXT ANIMATION END */
+
+/* SVG STYLES START */
+svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  fill: var(--text);
+}
+
+/* SVG STYLES END */
