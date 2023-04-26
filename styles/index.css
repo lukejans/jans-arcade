@@ -82,13 +82,16 @@ body {
   color: var(--alt);
 }
 a {
-  text-decoration: underline;
   color: var(--text);
 }
 a:hover {
   color: var(--bg);
   background-color: var(--prompt);
   cursor: pointer;
+}
+.odin {
+  font-weight: 700;
+  color: var(--cmd);
 }
 /* TEXT STYLING END */
 
@@ -147,7 +150,7 @@ pre {
 
 /* SVG STYLES START */
 svg {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 16px;
