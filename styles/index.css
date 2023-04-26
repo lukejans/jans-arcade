@@ -133,6 +133,7 @@ a:hover {
 pre {
   display: block;
   line-height: 1.3em;
+  letter-spacing: 1px;
   overflow: hidden;
   white-space: nowrap;
   font-family: var(--font-main);
