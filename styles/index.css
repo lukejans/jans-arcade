@@ -131,6 +131,7 @@ a:hover {
 
 /* OUTPUT TEXT ANIMATION START */
 pre {
+  position: relative;
   display: block;
   line-height: 1.3em;
   letter-spacing: 1px;
@@ -152,9 +153,11 @@ pre {
 /* SVG STYLES START */
 svg {
   display: inline-flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  width: 16px;
+  position: relative;
+  top: 2px;
+  width: 14px;
   fill: var(--text);
 }
 
