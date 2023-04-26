@@ -120,14 +120,14 @@ function commandOutput(cmd) {
     case 'history':
       addLine('<br>', '', 0);
       loopLines(commandHistory, 'cmds', 80);
-      addLine('<br>', '', 0);
+      addLine('<br>', '', 80 * commandHistory.length + 50);
       break;
     case 'clear':
       clearScreen();
       break;
     default:
       addLine(
-        'Command not found. For a list of available commands type <span class="cmds">[help]</span>.',
+        'Command not found. Type <span class="cmds">[help]</span> for a list of available commands.',
         '',
         100
       );
