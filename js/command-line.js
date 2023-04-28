@@ -27,6 +27,7 @@ window.addEventListener('click', function (event) {
 function cliDisplayInput() {
   CLI.textContent = INPUT.value;
   liveValidCommand(INPUT.value);
+  updateCaretMoves();
 }
 // create elements with text then add to dom
 function addLine(text, style, time) {
@@ -60,13 +61,33 @@ function loopLines(name, style, time) {
 
     terminal caret movements & cmd history scroll 
 */
+// init
+const caret = {
+  mR: 0,
+  mL: undefined,
+  calcLeft: function () {
+    return INPUT.value.length - caret.mR;
+  },
+};
+
+// caret.mR++;
+//     caret.mL = INPUT.value.length - caret.mR;
+// caret.mR--;
+//     caret.mL = INPUT.value.length - caret.mR;
 CARET.style.left = '0px';
+
 let movesRight = 0;
 let movesLeft;
+function updateCaretMoves() {
+  movesLeft = INPUT.value.length - movesRight;
+  console.log({ movesRight, movesLeft });
+}
 // change caret location based on arrow press, delete and type
 window.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowUp') {
     e.preventDefault();
+  } else if (e.key === 'Space') {
+    cliDisplayInput();
   } else if (e.key === 'ArrowDown') {
     e.preventDefault();
   } else if (e.key === 'Enter') {
@@ -77,14 +98,22 @@ window.addEventListener('keydown', function (e) {
     INPUT.value = '';
     cliDisplayInput();
   } else if (e.key === 'ArrowLeft' && movesLeft !== 0) {
+    caret.mR++;
+    caret.mL = caret.calcLeft();
+
     movesRight++;
     movesLeft = INPUT.value.length - movesRight;
     CARET.style.left = parseInt(CARET.style.left) - 9 + 'px';
   } else if (e.key === 'ArrowRight' && movesRight !== 0) {
+    caret.mR--;
+    caret.mL = caret.calcLeft();
+
     movesRight--;
     movesLeft = INPUT.value.length - movesRight;
     CARET.style.left = parseInt(CARET.style.left) + 9 + 'px';
   }
+  console.log(caret);
+  console.log({ movesRight, movesLeft });
 });
 /*
     COMMANDS
