@@ -27,7 +27,7 @@ window.addEventListener('click', function (event) {
 function cliDisplayInput() {
   CLI.textContent = INPUT.value;
   liveValidCommand(INPUT.value);
-  updateCaretMoves();
+  caret.updateMoves('');
 }
 // create elements with text then add to dom
 function addLine(text, style, time) {
@@ -61,60 +61,60 @@ function loopLines(name, style, time) {
 
     terminal caret movements & cmd history scroll 
 */
-// init
 const caret = {
   mR: 0,
   mL: undefined,
-  calcLeft: function () {
-    return INPUT.value.length - caret.mR;
+
+  reStyle: function (move) {
+    if (move === 'left') {
+      CARET.style.left = parseInt(CARET.style.left) - 9 + 'px';
+    } else if (move === 'right') {
+      CARET.style.left = parseInt(CARET.style.left) + 9 + 'px';
+    }
+  },
+
+  updateMoves: function (move) {
+    if (move === 'left') {
+      caret.mR++;
+    } else if (move === 'right') {
+      caret.mR--;
+    }
+    caret.mL = INPUT.value.length - caret.mR;
+  },
+
+  init: function () {
+    CARET.style.left = '0px';
   },
 };
-
-// caret.mR++;
-//     caret.mL = INPUT.value.length - caret.mR;
-// caret.mR--;
-//     caret.mL = INPUT.value.length - caret.mR;
-CARET.style.left = '0px';
-
-let movesRight = 0;
-let movesLeft;
-function updateCaretMoves() {
-  movesLeft = INPUT.value.length - movesRight;
-  console.log({ movesRight, movesLeft });
-}
-// change caret location based on arrow press, delete and type
-window.addEventListener('keydown', function (e) {
+// init
+caret.init();
+window.addEventListener('keydown', updateCaret);
+// change caret location based on key
+function updateCaret(e) {
   if (e.key === 'ArrowUp') {
     e.preventDefault();
-  } else if (e.key === 'Space') {
-    cliDisplayInput();
   } else if (e.key === 'ArrowDown') {
     e.preventDefault();
+  } else if (e.key === 'ArrowLeft' && caret.mL !== 0) {
+    caret.updateMoves('left');
+    caret.reStyle('left');
+  } else if (e.key === 'ArrowRight' && caret.mR !== 0) {
+    caret.updateMoves('right');
+    caret.reStyle('right');
+  } else if (e.key === 'Space') {
+    cliDisplayInput();
   } else if (e.key === 'Enter') {
     e.preventDefault();
+
     commandHistory.push(INPUT.value);
     printPrompt(INPUT.value);
     commandOutput(INPUT.value);
+
     INPUT.value = '';
     cliDisplayInput();
-  } else if (e.key === 'ArrowLeft' && movesLeft !== 0) {
-    caret.mR++;
-    caret.mL = caret.calcLeft();
-
-    movesRight++;
-    movesLeft = INPUT.value.length - movesRight;
-    CARET.style.left = parseInt(CARET.style.left) - 9 + 'px';
-  } else if (e.key === 'ArrowRight' && movesRight !== 0) {
-    caret.mR--;
-    caret.mL = caret.calcLeft();
-
-    movesRight--;
-    movesLeft = INPUT.value.length - movesRight;
-    CARET.style.left = parseInt(CARET.style.left) + 9 + 'px';
   }
-  console.log(caret);
-  console.log({ movesRight, movesLeft });
-});
+}
+
 /*
     COMMANDS
 
