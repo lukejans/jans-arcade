@@ -136,6 +136,7 @@ pre {
   display: block;
   line-height: 1.3em;
   overflow: hidden;
+  margin-left: 18px;
   white-space: nowrap;
   font-family: var(--font-main);
   animation: typing 0.5s steps(30, end);
@@ -161,5 +162,10 @@ svg {
   max-height: 15px;
   fill: var(--cmd);
 }
-
 /* SVG STYLES END */
+
+/* HIDDEN SPACES START */
+.hide {
+  color: transparent;
+}
+/* HIDDEN SPACES END */
