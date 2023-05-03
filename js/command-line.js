@@ -139,18 +139,20 @@ function commandOutput(cmd) {
       break;
     case 'link -t':
       addLine('Opening Twitter...', '', 0);
+      addLine('<br>', '', 50);
       newTab(twitter);
       break;
     case 'link -in':
       addLine('Opening LinkedIn...', '', 0);
+      addLine('<br>', '', 50);
       newTab(linkedin);
       break;
     case 'link -gh':
       addLine('Opening GitHub...', '', 0);
+      addLine('<br>', '', 50);
       newTab(github);
       break;
     case 'history':
-      addLine('<br>', '', 0);
       loopLines(commandHistory, 'cmds', 80);
       addLine('<br>', '', 80 * commandHistory.length + 50);
       break;
@@ -158,11 +160,14 @@ function commandOutput(cmd) {
       clearScreen();
       break;
     default:
+      addLine(`JansArcade: command not found: ${cmd}`, '', 10);
       addLine(
-        'Command not found. Type <span class="cmds">[help]</span> for a list of available commands.',
+        `Type <span class="cmds">'help'</span> for a list of available commands.`,
         '',
-        100
+        20
       );
+      addLine('<br>', '', 50);
+
       break;
   }
 }
@@ -195,30 +200,41 @@ function getCurrentTime() {
 // print prompt on output
 function printPrompt(cmd) {
   let prompt = document.createElement('p');
+  if (commandHistory.length === 0) {
+    INPUT.value = 'banner';
+    cmd = 'welcome';
+  }
   prompt.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
   <span class="time">${getCurrentTime()}</span> 
   <br> 
-  <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${isValidCommand(
+  <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ <span class="${isValidCommand(
+    INPUT.value.trim()
+  )}">\> </span><span class="${isValidCommand(
     INPUT.value.trim()
   )}">${cmd}</span></span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
+  if (commandHistory.length === 0) {
+    INPUT.value = '';
+  }
 }
 // style input validity
 function isValidCommand(textInput) {
   let style = '';
   if (commandList.includes(textInput)) {
-    style = 'cmds';
+    style = 'valid';
   } else {
-    style = 'error';
+    style = 'notValid';
   }
   return style;
 }
 // change color while typing
 function liveValidCommand(textInput) {
-  if (isValidCommand(textInput) === 'error') {
+  if (isValidCommand(textInput) === 'notValid') {
+    CLI.classList.remove('valid');
     CLI.classList.add('notValid');
   } else {
     CLI.classList.remove('notValid');
+    CLI.classList.add('valid');
   }
 }
