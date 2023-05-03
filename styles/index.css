@@ -71,12 +71,12 @@ body {
   font-weight: 700;
   margin: 10px 0 10px 0;
 }
-.error {
-  color: var(--error);
-}
 .cmds {
   color: var(--cmd);
   font-weight: 700;
+}
+.error {
+  color: var(--error);
 }
 .alt {
   color: var(--alt);
