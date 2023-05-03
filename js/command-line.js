@@ -7,7 +7,9 @@
 */
 // display intro output
 setTimeout(function () {
-  printPrompt('');
+  INPUT.value = 'banner';
+  printPrompt('hello world');
+  INPUT.value = '';
   loopLines(banner, 'banner', 80);
   INPUT.focus();
 }, 100);
@@ -17,6 +19,7 @@ const CLI = document.querySelector('.command-line');
 const INPUT = document.getElementById('type');
 const CARET = document.querySelector('.caret');
 const TERMINAL = document.querySelector('.terminal');
+const TICK = document.querySelector('.tick');
 // focus on textarea (INPUT)
 window.addEventListener('click', function (event) {
   if (event.target !== INPUT) {
@@ -200,23 +203,16 @@ function getCurrentTime() {
 // print prompt on output
 function printPrompt(cmd) {
   let prompt = document.createElement('p');
-  if (commandHistory.length === 0) {
-    INPUT.value = 'banner';
-    cmd = 'welcome';
-  }
   prompt.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
   <span class="time">${getCurrentTime()}</span> 
   <br> 
-  <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ <span class="${isValidCommand(
-    INPUT.value.trim()
-  )}">\> </span><span class="${isValidCommand(
-    INPUT.value.trim()
-  )}">${cmd}</span></span>`;
+  <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span>
+  <span class="alt">: ~ 
+  <span class="${isValidCommand(INPUT.value.trim())}">\> </span>
+  <span class="${isValidCommand(INPUT.value.trim())}">${cmd}</span>
+  </span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
-  if (commandHistory.length === 0) {
-    INPUT.value = '';
-  }
 }
 // style input validity
 function isValidCommand(textInput) {
@@ -230,11 +226,18 @@ function isValidCommand(textInput) {
 }
 // change color while typing
 function liveValidCommand(textInput) {
+  if (textInput.length === 0) {
+    TICK.classList.remove('notValid');
+  }
   if (isValidCommand(textInput) === 'notValid') {
     CLI.classList.remove('valid');
+    TICK.classList.remove('valid');
     CLI.classList.add('notValid');
+    TICK.classList.add('notValid');
   } else {
     CLI.classList.remove('notValid');
+    TICK.classList.remove('notValid');
     CLI.classList.add('valid');
+    TICK.classList.add('valid');
   }
 }
