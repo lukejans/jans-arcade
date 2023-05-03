@@ -25,8 +25,8 @@ window.addEventListener('click', function (event) {
 });
 // update command line with input
 function cliDisplayInput() {
-  CLI.textContent = INPUT.value;
-  liveValidCommand(INPUT.value);
+  CLI.innerHTML = INPUT.value.replace(/ /g, '<span class="hide">_</span>');
+  liveValidCommand(INPUT.value.trim());
   caret.updateMoves('');
 }
 // create elements with text then add to dom
@@ -102,13 +102,16 @@ function updateCaret(e) {
     caret.updateMoves('right');
     caret.reStyle('right');
   } else if (e.key === 'Space') {
+    e.preventDefault();
     cliDisplayInput();
   } else if (e.key === 'Enter') {
     e.preventDefault();
 
-    commandHistory.push(INPUT.value);
-    printPrompt(INPUT.value);
-    commandOutput(INPUT.value);
+    let a = INPUT.value.trim();
+    commandHistory.push(a);
+
+    printPrompt(a);
+    commandOutput(a);
 
     INPUT.value = '';
     cliDisplayInput();
@@ -131,18 +134,18 @@ function commandOutput(cmd) {
     case 'about':
       loopLines(about, '', 80);
       break;
-    case 'social':
-      loopLines(social, '', 80);
+    case 'link':
+      loopLines(link, '', 80);
       break;
-    case 'twitter':
+    case 'link -t':
       addLine('Opening Twitter...', '', 0);
       newTab(twitter);
       break;
-    case 'linkedin':
+    case 'link -in':
       addLine('Opening LinkedIn...', '', 0);
       newTab(linkedin);
       break;
-    case 'github':
+    case 'link -gh':
       addLine('Opening GitHub...', '', 0);
       newTab(github);
       break;
@@ -182,7 +185,7 @@ function newTab(link) {
 function printPrompt(cmd) {
   let prompt = document.createElement('p');
   prompt.innerHTML = `<span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span><span class="alt">: ~ $ <span class="${isValidCommand(
-    INPUT.value
+    INPUT.value.trim()
   )}">${cmd}</span></span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
@@ -197,6 +200,7 @@ function isValidCommand(textInput) {
   }
   return style;
 }
+// change color while typing
 function liveValidCommand(textInput) {
   if (isValidCommand(textInput) === 'error') {
     CLI.classList.add('notValid');
