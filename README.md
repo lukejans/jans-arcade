@@ -42,13 +42,10 @@ Terminal themed arcade to showcase various games I've built while learning html,
 
 - [ ] create game components
   - (SPA) toggle games with commands
-- [ ] create arrays for terminal functionality
-  - **clear** (clears terminal & history)
-  - **play** (pick game menu)
+- [ ] create command outputs
+  - **play**
+    - -options
   - **exit** (exit game)
-- [ ] game statistics / leaderboard
-- [ ] implement database for leaderboard
-- [ ] allow user login
 
 ### author
 
