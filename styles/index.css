@@ -3,11 +3,12 @@
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
   /* colors */
-  --bg: rgb(21, 21, 21);
-  --text: rgb(225, 178, 123);
-  --prompt: rgb(125, 98, 206);
-  --cmd: rgb(115, 171, 173);
-  --error: rgb(208, 97, 97);
+  --bg: rgb(34, 40, 53);
+  --text: rgb(170, 181, 207);
+  --prompt: rgb(191, 148, 228);
+  --cmd: rgb(130, 239, 246);
+  --valid: rgb(145, 243, 162);
+  --error: rgb(231, 98, 116);
   --alt: rgb(129, 129, 129);
 }
 /* SETUP END */
@@ -81,6 +82,9 @@ body {
 .alt {
   color: var(--alt);
 }
+.time {
+  color: rgb(254, 250, 169);
+}
 a {
   color: var(--text);
   font-size: 14px;
@@ -128,6 +132,9 @@ a:hover {
 .notValid {
   color: var(--error);
 }
+.valid {
+  color: var(--valid);
+}
 /* COMMAND LINE END */
 
 /* OUTPUT TEXT ANIMATION START */
@@ -158,9 +165,9 @@ svg {
   align-items: center;
   position: relative;
   top: 2px;
-  width: 14px;
-  max-height: 15px;
-  fill: var(--cmd);
+  width: 13px;
+  max-height: 14px;
+  fill: var(--alt);
 }
 /* SVG STYLES END */
 
