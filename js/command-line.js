@@ -84,11 +84,11 @@ const caret = {
 
   init: function () {
     CARET.style.left = '0px';
+    window.addEventListener('keydown', updateCaret);
   },
 };
 // init
 caret.init();
-window.addEventListener('keydown', updateCaret);
 // change caret location based on key
 function updateCaret(e) {
   if (e.key === 'ArrowUp') {
