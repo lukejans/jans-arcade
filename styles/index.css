@@ -79,6 +79,9 @@ body {
 .alt {
   color: var(--alt);
 }
+.grey {
+  color: var(--alt);
+}
 .clock,
 .time {
   color: rgb(254, 250, 169);
