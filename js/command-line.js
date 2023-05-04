@@ -59,6 +59,7 @@ function loopLines(name, style, time) {
     addLine(item, style, index * time);
   });
 }
+
 /*
     CARET
 
@@ -120,6 +121,11 @@ function updateCaret(e) {
     cliDisplayInput();
   }
 }
+/*
+    CARET END
+
+
+*/
 
 /*
     COMMANDS
@@ -176,19 +182,50 @@ function commandOutput(cmd) {
 }
 // command history
 let commandHistory = [];
-// clear the terminal
+// clear the terminal command
 function clearScreen() {
   setTimeout(function () {
     TERMINAL.innerHTML = '<a id="before"></a>';
     before = document.getElementById('before');
   }, 1);
 }
-// open links
+// open links command
 function newTab(link) {
   setTimeout(function () {
     window.open(link, '_blank');
   }, 500);
 }
+/*
+    COMMANDS END
+
+
+*/
+
+/*
+    PROMPT
+
+    function for printing the command prompt
+*/
+function updateClock() {
+  // Get a new Date object
+  const currentTime = new Date();
+
+  // Extract hours, minutes, and seconds
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
+
+  // Format the time as a string
+  const timeString = `${hours.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+  // Display the time in an HTML element or log it to the console
+  // Replace 'clockElement' with the ID of the HTML element where you want to display the time
+  document.getElementById('clock').innerText = timeString;
+}
+// Call the updateClock function every 1000 milliseconds (1 second)
+setInterval(updateClock, 1000);
 // get current time
 function getCurrentTime() {
   const time = new Date();
@@ -224,20 +261,25 @@ function isValidCommand(textInput) {
   }
   return style;
 }
-// change color while typing
+// Utility function to manage class changes
+function manageClasses(element, removeClasses, addClass) {
+  removeClasses.forEach((className) => element.classList.remove(className));
+  element.classList.add(addClass);
+}
+// Change color while typing
 function liveValidCommand(textInput) {
   if (textInput.length === 0) {
-    TICK.classList.remove('notValid');
-  }
-  if (isValidCommand(textInput) === 'notValid') {
-    CLI.classList.remove('valid');
-    TICK.classList.remove('valid');
-    CLI.classList.add('notValid');
-    TICK.classList.add('notValid');
+    manageClasses(TICK, ['notValid', 'valid'], 'grey');
+  } else if (isValidCommand(textInput) === 'notValid') {
+    manageClasses(TICK, ['grey', 'valid'], 'notValid');
+    manageClasses(CLI, ['valid'], 'notValid');
   } else {
-    CLI.classList.remove('notValid');
-    TICK.classList.remove('notValid');
-    CLI.classList.add('valid');
-    TICK.classList.add('valid');
+    manageClasses(TICK, ['grey', 'notValid'], 'valid');
+    manageClasses(CLI, ['notValid'], 'valid');
   }
 }
+/*
+    PROMPT END
+
+
+*/
