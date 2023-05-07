@@ -74,6 +74,8 @@ const caret = {
       CARET.style.left = parseInt(CARET.style.left) - 9 + 'px';
     } else if (move === 'right') {
       CARET.style.left = parseInt(CARET.style.left) + 9 + 'px';
+    } else {
+      CARET.style.left = '0px';
     }
   },
 
@@ -86,6 +88,11 @@ const caret = {
     caret.mL = INPUT.value.length - caret.mR;
   },
 
+  reset: function () {
+    caret.mR = 0;
+    caret.mL = undefined;
+  },
+
   init: function () {
     CARET.style.left = '0px';
     window.addEventListener('keydown', updateCaret);
@@ -93,33 +100,65 @@ const caret = {
 };
 // init
 caret.init();
+// command history
+let commandHistory = [];
+let commandPosition = commandHistory.length;
+let tempInput = '';
 // change caret location based on key
 function updateCaret(e) {
   if (e.key === 'ArrowUp') {
     e.preventDefault();
+    if (commandHistory.length > 0) {
+      // Save the current input when making the first up arrow move
+      if (commandPosition === commandHistory.length) {
+        tempInput = INPUT.value;
+      }
+
+      // Navigate up the command history
+      if (commandPosition > 0) {
+        commandPosition--;
+      }
+
+      INPUT.value = commandHistory[commandPosition];
+      caret.reset();
+      caret.reStyle('');
+    }
   } else if (e.key === 'ArrowDown') {
     e.preventDefault();
+    if (commandHistory.length > 0) {
+      // Navigate down the command history
+      if (commandPosition < commandHistory.length - 1) {
+        commandPosition++;
+        INPUT.value = commandHistory[commandPosition];
+      } else if (commandPosition === commandHistory.length - 1) {
+        // Restore the temporary value when reaching the bottom
+        commandPosition++;
+        INPUT.value = tempInput;
+      }
+      caret.reset();
+      caret.reStyle('');
+    }
   } else if (e.key === 'ArrowLeft' && caret.mL !== 0) {
     caret.updateMoves('left');
     caret.reStyle('left');
   } else if (e.key === 'ArrowRight' && caret.mR !== 0) {
     caret.updateMoves('right');
     caret.reStyle('right');
-  } else if (e.key === 'Space') {
-    e.preventDefault();
-    cliDisplayInput();
   } else if (e.key === 'Enter') {
     e.preventDefault();
 
     let a = INPUT.value.trim();
     commandHistory.push(a);
+    commandPosition = commandHistory.length;
 
     printPrompt(a);
     commandOutput(a);
 
     INPUT.value = '';
-    cliDisplayInput();
+  } else {
+    commandPosition = commandHistory.length;
   }
+  cliDisplayInput();
 }
 /*
     CARET END
@@ -180,8 +219,6 @@ function commandOutput(cmd) {
       break;
   }
 }
-// command history
-let commandHistory = [];
 // clear the terminal command
 function clearScreen() {
   setTimeout(function () {
