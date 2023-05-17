@@ -12,7 +12,6 @@ setTimeout(function () {
   INPUT.value = '';
   loopLines(banner, 'banner', 80);
   INPUT.focus();
-  console.log('init print: ran');
 }, 100);
 // query the dom
 let before = document.getElementById('before'); // changes on clear cmd
@@ -26,14 +25,12 @@ window.addEventListener('click', function (event) {
   if (event.target !== INPUT) {
     INPUT.focus();
   }
-  console.log('e focus click: ran');
 });
 // update command line with input
 function cliDisplayInput() {
   CLI.innerHTML = INPUT.value.replace(/ /g, '<span class="hide">_</span>');
   liveValidCommand(INPUT.value.trim());
   caret.updateMoves('');
-  console.log('cliDisplayInput: ran');
 }
 // create elements with text then add to dom
 function addLine(text, style, time) {
@@ -55,14 +52,12 @@ function addLine(text, style, time) {
 
     window.scrollTo(0, document.body.offsetHeight);
   }, time);
-  console.log('addLine: ran');
 }
 // given an array of text to display run addLine on each arr[i]
 function loopLines(name, style, time) {
   name.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
-  console.log('loopLines ran');
 }
 
 /*
@@ -82,7 +77,6 @@ const caret = {
     } else {
       CARET.style.left = '0px';
     }
-    console.log('reStyle: ran');
   },
 
   updateMoves: function (move) {
@@ -92,19 +86,16 @@ const caret = {
       caret.mR--;
     }
     caret.mL = INPUT.value.length - caret.mR;
-    console.log('updateMoves: ran');
   },
 
   reset: function () {
     caret.mR = 0;
     caret.mL = undefined;
-    console.log('reset: ran');
   },
 
   init: function () {
     CARET.style.left = '0px';
     window.addEventListener('keydown', updateCaret);
-    console.log('caret init: ran');
   },
 };
 // init
@@ -168,7 +159,6 @@ function updateCaret(e) {
     commandPosition = commandHistory.length;
   }
   cliDisplayInput();
-  console.log('updateCaret: ran');
 }
 /*
     CARET END
@@ -228,7 +218,6 @@ function commandOutput(cmd) {
 
       break;
   }
-  console.log('commandOutput: ran');
 }
 // clear the terminal command
 function clearScreen() {
@@ -298,7 +287,6 @@ function printPrompt(cmd) {
   </span>`;
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
-  console.log('printPrompt: ran');
 }
 // style input validity
 function isValidCommand(textInput) {
@@ -308,14 +296,13 @@ function isValidCommand(textInput) {
   } else {
     style = 'notValid';
   }
-  console.log('isValidCommand: ran');
+
   return style;
 }
 // Utility function to manage class changes
 function manageClasses(element, removeClasses, addClass) {
   removeClasses.forEach((className) => element.classList.remove(className));
   element.classList.add(addClass);
-  console.log('manageClasses: ran');
 }
 // Change color while typing
 function liveValidCommand(textInput) {
@@ -328,7 +315,6 @@ function liveValidCommand(textInput) {
     manageClasses(TICK, ['grey', 'notValid'], 'valid');
     manageClasses(CLI, ['notValid'], 'valid');
   }
-  console.log('liveValidCommand: ran');
 }
 /*
     PROMPT END
