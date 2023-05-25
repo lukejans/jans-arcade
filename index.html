@@ -21,9 +21,11 @@
   </head>
   <body>
     <main>
-      <section class="terminal">
+      <section style="display: none" class="terminal">
         <a id="before"></a>
       </section>
+
+      <section class="game-container"></section>
 
       <section class="command">
         <p class="prompt">
@@ -39,6 +41,7 @@
         </p>
         <p class="command-line"></p>
         <div class="caret blink"></div>
+
         <textarea
           type="text"
           id="type"
