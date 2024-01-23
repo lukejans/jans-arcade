@@ -179,3 +179,10 @@ svg {
   color: transparent;
 }
 /* HIDDEN SPACES END */
+
+/* GAME SECTION START*/
+.game-container {
+  min-height: 85vh;
+}
+
+/* GAME SECTION END*/
