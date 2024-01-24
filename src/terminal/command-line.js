@@ -38,18 +38,18 @@ function cliDisplayInput() {
 
 // create elements with text then add to dom
 function addLine(text, style, time) {
-  let t = '';
+  let curLine = '';
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) == ' ' && text.charAt(i + 1) == ' ') {
-      t += '&nbsp;&nbsp;';
+      curLine += '&nbsp;&nbsp;';
       i++;
     } else {
-      t += text.charAt(i);
+      curLine += text.charAt(i);
     }
   }
   setTimeout(function () {
     let next = document.createElement('pre');
-    next.innerHTML = t;
+    next.innerHTML = curLine;
     next.className = style;
 
     before.parentNode.insertBefore(next, before);
