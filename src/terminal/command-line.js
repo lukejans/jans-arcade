@@ -10,9 +10,8 @@
 
 // display intro output
 setTimeout(function () {
-  INPUT.value = 'banner';
-  printPrompt('hello world');
-  INPUT.value = '';
+  addLine(`<span class="text">Connected at ${getCurrentTime()}</span>`, '', 0);
+
   loopLines(banner, 'banner', 80);
   INPUT.focus();
 }, 100);
