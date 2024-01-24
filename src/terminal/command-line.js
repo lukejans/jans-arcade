@@ -281,7 +281,7 @@ function printPrompt(cmd) {
   <span class="time">${getCurrentTime()}</span> 
   <br> 
   <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span>
-  <span class="alt">: ~ 
+  <span class="alt">  
   <span class="${isValidCommand(INPUT.value.trim())}">\> </span>
   <span class="${isValidCommand(INPUT.value.trim())}">${cmd}</span>
   </span>`;
