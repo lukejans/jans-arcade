@@ -42,3 +42,5 @@ Terminal themed arcade to showcase various games I've built while learning html,
 - [ ] battleship
 - [ ] chess
 - [ ] etch a sketch
+
+#### [link](https://lukejans.github.io/jans-arcade/)
