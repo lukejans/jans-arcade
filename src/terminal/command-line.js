@@ -10,11 +10,15 @@
 
 // display intro output
 setTimeout(function () {
-  addLine(`<span class="text">Connected at ${getCurrentTime()}</span>`, '', 0);
+  addLine(
+    `<span class="text">Connected at ${getCurrentTime()}</span>`,
+    'text',
+    0
+  );
   loopLines(banner, 'banner', 80);
   addLine(
     '<span class="text">Please select a game mode</span>',
-    '',
+    'text',
     80 * banner.length + 50
   );
   INPUT.focus();

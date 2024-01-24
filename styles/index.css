@@ -1,4 +1,4 @@
-/* SETUP START */
+/* SETUP */
 :root {
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
@@ -19,9 +19,8 @@
   color: var(--bg);
   background-color: var(--prompt);
 }
-/* SETUP END */
 
-/* RESET START */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -39,9 +38,8 @@ textarea {
   position: absolute;
   left: -1000px;
 }
-/* RESET END */
 
-/* LAYOUT START */
+/* LAYOUT */
 main {
   margin: 15px;
   display: flex;
@@ -57,9 +55,7 @@ body {
   color: var(--text);
 }
 
-/* LAYOUT END */
-
-/* TEXT STYLING START */
+/* TEXT STYLING */
 .banner {
   color: var(--cmd);
   font-weight: 700;
@@ -100,9 +96,8 @@ a:hover {
   font-weight: 700;
   color: var(--cmd);
 }
-/* TEXT STYLING END */
 
-/* CARET START */
+/* CARET */
 .caret {
   background-color: var(--prompt);
   width: 10px;
@@ -118,9 +113,8 @@ a:hover {
     opacity: 0;
   }
 }
-/* CARET END */
 
-/* COMMAND LINE START */
+/* COMMAND LINE */
 .command {
   display: flex;
   justify-content: flex-start;
@@ -137,9 +131,8 @@ a:hover {
 .valid {
   color: var(--valid);
 }
-/* COMMAND LINE END */
 
-/* OUTPUT TEXT ANIMATION START */
+/* OUTPUT & TEXT ANIMATION */
 pre {
   position: relative;
   display: block;
@@ -157,9 +150,22 @@ pre {
     width: 100%;
   }
 }
-/* OUTPUT TEXT ANIMATION END */
 
-/* SVG STYLES START */
+.banner {
+  align-self: center;
+}
+.text {
+  align-self: start;
+}
+
+/* TERMINAL */
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+/* SVG STYLES */
 svg {
   display: inline-flex;
   justify-content: end;
@@ -170,14 +176,10 @@ svg {
   max-height: 14px;
   fill: var(--alt);
 }
-/* SVG STYLES END */
 
-/* HIDDEN SPACES START */
+/* HIDDEN SPACES */
 .hide {
   color: transparent;
 }
-/* HIDDEN SPACES END */
 
-/* GAME SECTION START*/
-
-/* GAME SECTION END*/
+/* GAME SECTION */
