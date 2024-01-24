@@ -11,6 +11,14 @@
   --error: rgb(231, 98, 116);
   --alt: rgb(129, 129, 129);
 }
+::selection {
+  color: var(--bg);
+  background-color: var(--prompt);
+}
+::-moz-selection {
+  color: var(--bg);
+  background-color: var(--prompt);
+}
 /* SETUP END */
 
 /* RESET START */
@@ -30,14 +38,6 @@ textarea {
   background-color: transparent;
   position: absolute;
   left: -1000px;
-}
-::selection {
-  color: var(--bg);
-  background-color: var(--prompt);
-}
-::-moz-selection {
-  color: var(--bg);
-  background-color: var(--prompt);
 }
 /* RESET END */
 
@@ -108,7 +108,6 @@ a:hover {
   height: 20px;
   position: relative;
   left: 0px;
-  margin-top: 20px;
 }
 .blink {
   animation: blinker 1s linear infinite;
@@ -130,7 +129,6 @@ a:hover {
   font-weight: 700;
   color: var(--cmd);
   margin-left: 5px;
-  margin-top: 20px;
 }
 .notValid {
   color: var(--error);
@@ -181,8 +179,5 @@ svg {
 /* HIDDEN SPACES END */
 
 /* GAME SECTION START*/
-.game-container {
-  min-height: 85vh;
-}
 
 /* GAME SECTION END*/
