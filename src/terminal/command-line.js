@@ -11,8 +11,12 @@
 // display intro output
 setTimeout(function () {
   addLine(`<span class="text">Connected at ${getCurrentTime()}</span>`, '', 0);
-
   loopLines(banner, 'banner', 80);
+  addLine(
+    '<span class="text">Please select a game mode</span>',
+    '',
+    80 * banner.length + 50
+  );
   INPUT.focus();
 }, 100);
 
@@ -45,7 +49,7 @@ function addLine(text, style, time) {
   // build line
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) == ' ' && text.charAt(i + 1) == ' ') {
-      curLine += '&nbsp;&nbsp;';
+      curLine += '&nbsp;';
       i++;
     } else {
       curLine += text.charAt(i);
