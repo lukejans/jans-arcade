@@ -1,10 +1,13 @@
 /* 
     COMMAND LINE
 
-    display input from hidden textarea in the
-    command line interface (cli) and display output 
-    from commands entered.
+      brief: when a user clicks anywhere on the screen it focuses the user
+             to a hidden text area where they can type. What is typed in the 
+             textarea is then read and displayed in the command line. Upon 
+             enter key press if the command is valid the corresponding output
+             will print.
 */
+
 // display intro output
 setTimeout(function () {
   INPUT.value = 'banner';
@@ -31,6 +34,7 @@ window.addEventListener('click', function (event) {
 
 // update command line with input
 function cliDisplayInput() {
+  // account for blank space collapsing
   CLI.innerHTML = INPUT.value.replace(/ /g, '<span class="hide">_</span>');
   liveValidCommand(INPUT.value.trim());
   caret.updateMoves('');
@@ -39,6 +43,7 @@ function cliDisplayInput() {
 // create elements with text then add to dom
 function addLine(text, style, time) {
   let curLine = '';
+  // build line
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) == ' ' && text.charAt(i + 1) == ' ') {
       curLine += '&nbsp;&nbsp;';
@@ -47,12 +52,13 @@ function addLine(text, style, time) {
       curLine += text.charAt(i);
     }
   }
+  // print line to dom
   setTimeout(function () {
-    let next = document.createElement('pre');
-    next.innerHTML = curLine;
-    next.className = style;
+    let line = document.createElement('pre');
+    line.innerHTML = curLine;
+    line.className = style;
 
-    before.parentNode.insertBefore(next, before);
+    before.parentNode.insertBefore(line, before);
 
     window.scrollTo(0, document.body.offsetHeight);
   }, time);
@@ -251,29 +257,9 @@ function newTab(link) {
 /*
     PROMPT
 
-    function for printing the command prompt
+    functions for printing the command prompt
 */
-function updateClock() {
-  // Get a new Date object
-  const currentTime = new Date();
 
-  // Extract hours, minutes, and seconds
-  const hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
-  const seconds = currentTime.getSeconds();
-
-  // Format the time as a string
-  const timeString = `${hours.toString().padStart(2, '0')}:${minutes
-    .toString()
-    .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-  // Display the time in an HTML element or log it to the console
-  // Replace 'clockElement' with the ID of the HTML element where you want to display the time
-  document.getElementById('clock').innerText = timeString;
-}
-
-// Call the updateClock function every 1000 milliseconds (1 second)
-setInterval(updateClock, 1000);
 // get current time
 function getCurrentTime() {
   const time = new Date();
@@ -285,6 +271,12 @@ function getCurrentTime() {
     String(time.getSeconds()).padStart(2, '0')
   );
 }
+
+function updateClock() {
+  const timeString = getCurrentTime();
+  document.getElementById('clock').innerText = timeString;
+}
+setInterval(updateClock, 1000);
 
 // print prompt on output
 function printPrompt(cmd) {
@@ -313,13 +305,13 @@ function isValidCommand(textInput) {
   return style;
 }
 
-// Utility function to manage class changes
+// utility function to manage class changes
 function manageClasses(element, removeClasses, addClass) {
   removeClasses.forEach((className) => element.classList.remove(className));
   element.classList.add(addClass);
 }
 
-// Change color while typing
+// change color while typing
 function liveValidCommand(textInput) {
   if (textInput.length === 0) {
     manageClasses(TICK, ['notValid', 'valid'], 'grey');
