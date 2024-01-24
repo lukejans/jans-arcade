@@ -13,6 +13,7 @@ setTimeout(function () {
   loopLines(banner, 'banner', 80);
   INPUT.focus();
 }, 100);
+
 // query the dom
 let before = document.getElementById('before'); // changes on clear cmd
 const CLI = document.querySelector('.command-line');
@@ -20,18 +21,21 @@ const INPUT = document.getElementById('type');
 const CARET = document.querySelector('.caret');
 const TERMINAL = document.querySelector('.terminal');
 const TICK = document.querySelector('.tick');
+
 // focus on textarea (INPUT)
 window.addEventListener('click', function (event) {
   if (event.target !== INPUT) {
     INPUT.focus();
   }
 });
+
 // update command line with input
 function cliDisplayInput() {
   CLI.innerHTML = INPUT.value.replace(/ /g, '<span class="hide">_</span>');
   liveValidCommand(INPUT.value.trim());
   caret.updateMoves('');
 }
+
 // create elements with text then add to dom
 function addLine(text, style, time) {
   let t = '';
@@ -53,6 +57,7 @@ function addLine(text, style, time) {
     window.scrollTo(0, document.body.offsetHeight);
   }, time);
 }
+
 // given an array of text to display run addLine on each arr[i]
 function loopLines(name, style, time) {
   name.forEach(function (item, index) {
@@ -98,12 +103,15 @@ const caret = {
     window.addEventListener('keydown', updateCaret);
   },
 };
+
 // init
 caret.init();
+
 // command history
 let commandHistory = [];
 let commandPosition = commandHistory.length;
 let tempInput = '';
+
 // change caret location based on key
 function updateCaret(e) {
   if (e.key === 'ArrowUp') {
@@ -219,6 +227,7 @@ function commandOutput(cmd) {
       break;
   }
 }
+
 // clear the terminal command
 function clearScreen() {
   setTimeout(function () {
@@ -226,6 +235,7 @@ function clearScreen() {
     before = document.getElementById('before');
   }, 1);
 }
+
 // open links command
 function newTab(link) {
   setTimeout(function () {
@@ -261,6 +271,7 @@ function updateClock() {
   // Replace 'clockElement' with the ID of the HTML element where you want to display the time
   document.getElementById('clock').innerText = timeString;
 }
+
 // Call the updateClock function every 1000 milliseconds (1 second)
 setInterval(updateClock, 1000);
 // get current time
@@ -274,6 +285,7 @@ function getCurrentTime() {
     String(time.getSeconds()).padStart(2, '0')
   );
 }
+
 // print prompt on output
 function printPrompt(cmd) {
   let prompt = document.createElement('p');
@@ -288,6 +300,7 @@ function printPrompt(cmd) {
   prompt.className = 'prompt';
   before.parentNode.insertBefore(prompt, before);
 }
+
 // style input validity
 function isValidCommand(textInput) {
   let style = '';
@@ -299,11 +312,13 @@ function isValidCommand(textInput) {
 
   return style;
 }
+
 // Utility function to manage class changes
 function manageClasses(element, removeClasses, addClass) {
   removeClasses.forEach((className) => element.classList.remove(className));
   element.classList.add(addClass);
 }
+
 // Change color while typing
 function liveValidCommand(textInput) {
   if (textInput.length === 0) {
