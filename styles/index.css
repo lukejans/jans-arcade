@@ -3,10 +3,10 @@
   /* fonts */
   --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
   /* colors */
-  --bg: rgb(34, 40, 53);
+  --bg: rgb(13, 20, 15);
   --text: rgb(170, 181, 207);
-  --prompt: rgb(191, 148, 228);
-  --cmd: rgb(130, 239, 246);
+  --prompt: rgb(117, 247, 139);
+  --cmd: rgb(117, 247, 139);
   --valid: rgb(145, 243, 162);
   --error: rgb(231, 98, 116);
   --alt: rgb(129, 129, 129);
