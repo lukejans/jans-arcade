@@ -59,6 +59,7 @@ body {
 .banner {
   color: var(--cmd);
   font-weight: 700;
+  font-size: 12px;
 }
 .text {
   color: var(--text);
