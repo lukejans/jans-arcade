@@ -29,18 +29,6 @@
   -ms-touch-action: manipulation;
   overflow: hidden;
 }
-textarea {
-  border: none;
-  overflow: auto;
-  outline: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  resize: none;
-  background-color: transparent;
-  position: absolute;
-  left: -1000px;
-}
 
 /* LAYOUT */
 main {
