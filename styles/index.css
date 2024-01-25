@@ -26,6 +26,7 @@
   padding: 0;
   box-sizing: border-box;
   touch-action: manipulation;
+  -ms-touch-action: manipulation;
   overflow: hidden;
 }
 textarea {
@@ -81,10 +82,6 @@ body {
 }
 .grey {
   color: var(--alt);
-}
-.clock,
-.time {
-  color: rgb(254, 250, 169);
 }
 a {
   color: var(--text);
