@@ -119,6 +119,7 @@ a:hover {
   display: flex;
   justify-content: flex-start;
   align-self: flex-start;
+  align-items: center;
 }
 .command-line {
   font-weight: 700;
