@@ -1,54 +1,41 @@
-/* SETUP */
-:root {
-  /* fonts */
-  --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
-  /* colors */
-  --bg: rgb(13, 20, 15);
-  --text: rgb(170, 181, 207);
-  --prompt: rgb(117, 247, 139);
-  --cmd: rgb(117, 247, 139);
-  --valid: rgb(145, 243, 162);
-  --error: rgb(231, 98, 116);
-  --alt: rgb(129, 129, 129);
-}
-::selection {
-  color: var(--bg);
-  background-color: var(--prompt);
-}
-::-moz-selection {
-  color: var(--bg);
-  background-color: var(--prompt);
-}
-
-/* RESET */
+/* 
+Setup
+*/
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   touch-action: manipulation;
   -ms-touch-action: manipulation;
   overflow: hidden;
 }
+:root {
+  /* fonts */
+  --font-main: 'Fira Code', monospace; /* weights: 400, 700 */
+  /* colors */
+  --bg: rgb(15, 25, 17);
+  --text: rgb(170, 181, 207);
+  --green: rgb(117, 247, 139);
+  --error: rgb(231, 98, 116);
+  --alt: rgb(129, 129, 129);
+}
 
 /* LAYOUT */
-main {
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 100vw;
-}
 body {
   background-color: var(--bg);
   font-family: var(--font-main);
   font-size: 15px;
   color: var(--text);
 }
+main {
+  max-width: 100vw;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 /* TEXT STYLING */
 .banner {
-  color: var(--cmd);
+  color: var(--green);
   font-weight: 700;
   font-size: 12px;
 }
@@ -57,101 +44,18 @@ body {
   font-weight: 400;
 }
 .prompt {
-  color: var(--prompt);
+  color: var(--green);
   font-weight: 700;
   margin: 10px 0 10px 0;
-}
-.cmds {
-  color: var(--cmd);
-  font-weight: 700;
 }
 .alt {
   color: var(--alt);
 }
-.grey {
-  color: var(--alt);
-}
-a {
-  color: var(--text);
-  font-size: 14px;
-}
-a:hover {
-  color: var(--bg);
-  background-color: var(--prompt);
-  cursor: pointer;
-}
-.odin {
-  font-weight: 700;
-  color: var(--cmd);
-}
-
-/* CARET */
-.caret {
-  background-color: var(--prompt);
-  width: 10px;
-  height: 20px;
-  position: relative;
-  left: 0px;
-}
-.blink {
-  animation: blinker 1s linear infinite;
-}
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* COMMAND LINE */
-.command {
-  display: flex;
-  justify-content: flex-start;
-  align-self: flex-start;
-  align-items: center;
-}
-.command-line {
-  font-weight: 700;
-  color: var(--cmd);
-  margin-left: 5px;
-}
-.notValid {
-  color: var(--error);
-}
-.valid {
-  color: var(--valid);
-}
-
-/* OUTPUT & TEXT ANIMATION */
-pre {
-  position: relative;
-  display: block;
-  line-height: 1.3em;
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: var(--font-main);
-  animation: typing 0.5s steps(30, end);
-}
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
 .banner {
   align-self: center;
 }
 .text {
   align-self: start;
-}
-
-/* TERMINAL */
-.terminal-output {
-  display: flex;
-  flex-direction: column;
-  min-width: 100%;
 }
 
 /* SVG STYLES */
@@ -165,10 +69,3 @@ svg {
   max-height: 14px;
   fill: var(--alt);
 }
-
-/* HIDDEN SPACES */
-.hide {
-  color: transparent;
-}
-
-/* GAME SECTION */
