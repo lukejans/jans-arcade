@@ -1,11 +1,6 @@
 /* 
-    COMMAND LINE
-
-      brief: when a user clicks anywhere on the screen it focuses the user
-             to a hidden text area where they can type. What is typed in the 
-             textarea is then read and displayed in the command line. Upon 
-             enter key press if the command is valid the corresponding output
-             will print.
+    Command Line
+      
 */
 // display intro output
 setTimeout(function () {
