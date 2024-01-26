@@ -1,0 +1,52 @@
+/* COMMAND LINE */
+.command {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: center;
+}
+.command-line {
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+/* CARET */
+.caret {
+  background-color: var(--green);
+  width: 10px;
+  height: 20px;
+  position: relative;
+  left: 0px;
+}
+.blink {
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* OUTPUT & TEXT ANIMATION */
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+pre {
+  position: relative;
+  display: block;
+  line-height: 1.3em;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-main);
+  animation: typing 0.5s steps(30, end);
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
