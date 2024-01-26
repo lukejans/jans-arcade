@@ -20,13 +20,11 @@ setTimeout(function () {
     'text',
     80 * banner.length + 50
   );
-  INPUT.focus();
 }, 100);
 
 // query the dom
 let before = document.getElementById('before'); // changes on clear cmd
 const CLI = document.querySelector('.command-line');
-const INPUT = document.getElementById('type');
 const CARET = document.querySelector('.caret');
 const TERMINAL = document.querySelector('.terminal-output');
 
@@ -118,24 +116,6 @@ function getCurrentTime() {
 function updateClock() {
   const timeString = getCurrentTime();
   document.getElementById('clock').innerText = timeString;
-}
-
-/*
-    PROMPT
-
-    functions for printing the command prompt
-*/
-// print prompt on output
-function printPrompt(cmd) {
-  let prompt = document.createElement('p');
-  prompt.innerHTML = `
-  <span>guest</span><span class="alt">@</span><span class="cmds">jansarcade</span>
-  <span class="alt">  
-  <span class="${isValidCommand(INPUT.value.trim())}">\> </span>
-  <span class="${isValidCommand(INPUT.value.trim())}">${cmd}</span>
-  </span>`;
-  prompt.className = 'prompt';
-  before.parentNode.insertBefore(prompt, before);
 }
 
 // utility function to manage class changes
