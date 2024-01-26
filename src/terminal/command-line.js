@@ -30,19 +30,8 @@ const INPUT = document.getElementById('type');
 const CARET = document.querySelector('.caret');
 const TERMINAL = document.querySelector('.terminal-output');
 
-// focus on textarea (INPUT)
-window.addEventListener('click', function (event) {
-  if (event.target !== INPUT) {
-    INPUT.focus();
-  }
-});
-
 // update command line with input
-function cliDisplayInput() {
-  // account for blank space collapsing
-  CLI.innerHTML = INPUT.value.replace(/ /g, '<span class="hide">_</span>');
-  liveValidCommand(INPUT.value.trim());
-}
+function cliDisplayInput() {}
 
 // create elements with text then add to dom
 function addLine(text, style, time) {
