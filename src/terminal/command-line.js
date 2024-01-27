@@ -1,21 +1,7 @@
 /* 
-    Command Line
+    TERMINAL
       
 */
-// display intro output
-setTimeout(function () {
-  addLine(
-    `<span class="text">Connected at ${getCurrentTime()}</span>`,
-    'text',
-    0
-  );
-  loopLines(banner, 'banner', 80);
-  addLine(
-    '<span class="text">Please select a game mode</span>',
-    'text',
-    80 * banner.length + 50
-  );
-}, 100);
 
 // query the dom
 let before = document.getElementById('before'); // changes on clear cmd
@@ -58,30 +44,47 @@ function loopLines(name, style, time) {
 }
 
 /*
-    COMMANDS
+    TERMINAL OUTPUTS
 
     valid commands to run on input
 */
-function commandOutput(cmd) {
-  switch (cmd.toLowerCase()) {
-    case 'banner':
-      loopLines(banner, 'banner', 80);
-      break;
-    case 'clear':
-      clearScreen();
-      break;
-    default:
-      addLine(`JansArcade: command not found: ${cmd}`, '', 10);
-      addLine(
-        `Type <span class="cmds">'help'</span> for a list of available commands.`,
-        'text',
-        20
-      );
-      addLine('<br>', 'text', 50);
+const introBanner = {
+  connected: `<span class="text">Connected at ${getCurrentTime()}</span>`,
+  banner: [
+    '  ___',
+    '  ,"---".',
+    '  :         ;',
+    "  `-.-'",
+    '  | |',
+    '  | |',
+    '  | |',
+    '    _.-\\_/-._  ',
+    '  _ / |         |  \\ _ ',
+    "  / /     `---'     \\ \\",
+    "  /    `-----------'    \\",
+    '  /,-""-.             ,-""-.\\',
+    `  ( i-..-i             i-..-i )`,
+    "  |`|        |-------|        |'|",
+    "  \\ '-..-'    |=|    '-..-' /",
+    "  `------------------'",
+    '     __                 ',
+    '      __ / /__   ___   ___',
+    '    / // / _ `/ _ \\(_-<',
+    '    ___\\___/\\_,_/_//_/___/__  ',
+    '   / _ | ___________ ____/ /__',
+    '   / __ |/ __/ __/ _ `/ _   / -_)',
+    '/_/ |_/_/   \\__/\\_,_/\\_,_/\\__/ ',
+    '                                             © 2024',
+  ],
+  message: '<span class="text">Please select a game mode</span>',
+};
 
-      break;
-  }
-}
+// display intro banner
+setTimeout(function () {
+  addLine(introBanner.connected, 'text', 0);
+  loopLines(introBanner.banner, 'banner', 80);
+  addLine(introBanner.message, 'text', 80 * introBanner.banner.length);
+}, 100);
 
 // clear the terminal command
 function clearScreen() {
@@ -111,10 +114,4 @@ function getCurrentTime() {
 function updateClock() {
   const timeString = getCurrentTime();
   document.getElementById('clock').innerText = timeString;
-}
-
-// utility function to manage class changes
-function manageClasses(element, removeClasses, addClass) {
-  removeClasses.forEach((className) => element.classList.remove(className));
-  element.classList.add(addClass);
 }
