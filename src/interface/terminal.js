@@ -31,8 +31,6 @@ function addLine(content, style, time) {
     line.className = style;
 
     before.parentNode.insertBefore(line, before);
-
-    window.scrollTo(0, document.body.offsetHeight);
   }, time);
 }
 
