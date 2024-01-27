@@ -13,15 +13,15 @@ const TERMINAL = document.querySelector('.terminal-output');
 function cliDisplayInput() {}
 
 // create elements with text then add to dom
-function addLine(text, style, time) {
+function addLine(content, style, time) {
   let curLine = '';
   // build line
-  for (let i = 0; i < text.length; i++) {
-    if (text.charAt(i) == ' ' && text.charAt(i + 1) == ' ') {
+  for (let i = 0; i < content.length; i++) {
+    if (content.charAt(i) == ' ' && content.charAt(i + 1) == ' ') {
       curLine += '&nbsp;';
       i++;
     } else {
-      curLine += text.charAt(i);
+      curLine += content.charAt(i);
     }
   }
   // print line to dom
@@ -37,8 +37,8 @@ function addLine(text, style, time) {
 }
 
 // given an array of text to display run addLine on each arr[i]
-function loopLines(name, style, time) {
-  name.forEach(function (item, index) {
+function loopLines(content, style, time) {
+  content.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
 }
