@@ -1,11 +1,11 @@
 /* COMMAND LINE */
-.command {
+.command-line {
   display: flex;
   justify-content: flex-start;
   align-self: flex-start;
   align-items: center;
 }
-.command-line {
+.command {
   font-weight: 700;
   margin-left: 5px;
 }

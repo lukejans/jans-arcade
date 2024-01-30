@@ -5,7 +5,7 @@
 
 // query the dom
 let before = document.getElementById('before'); // changes on clear cmd
-const CLI = document.querySelector('.command-line');
+const CLI = document.querySelector('.command');
 const CARET = document.querySelector('.caret');
 const TERMINAL = document.querySelector('.terminal-output');
 
