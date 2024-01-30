@@ -11,6 +11,7 @@
   /* colors */
   --bg: rgb(15, 25, 17);
   --text: rgb(170, 181, 207);
+  --yellow: rgb(255, 250, 148);
   --green: rgb(117, 247, 139);
   --green2: rgba(117, 247, 139, 0.025);
   --error: rgb(231, 98, 116);
@@ -25,17 +26,19 @@ body {
 }
 main {
   max-width: 100vw;
+  min-height: 100dvh;
   margin: 15px;
   display: flex;
   flex-direction: column;
 }
 .select-game {
   width: 100%;
-  padding: 5px;
+  min-height: 100%;
   background-color: var(--green2);
   border-radius: 0.75rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* fonts
@@ -62,6 +65,20 @@ body {
   color: var(--alt);
 }
 
+/* mode selection
+*/
+.select-game button {
+  color: var(--text);
+  background-color: var(--green2);
+  border: 1px solid var(--green);
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+/* .last-item
+.cur-item
+.next-item */
+
 svg {
   background-color: var(--bg);
   margin: 10px;
@@ -72,7 +89,7 @@ svg {
   align-items: center;
   position: relative;
   top: 2px;
-  width: 150px;
-  min-height: 150px;
+  width: 75px;
+  min-height: 75px;
   fill: var(--green);
 }
