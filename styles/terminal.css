@@ -1,16 +1,27 @@
-/* COMMAND LINE */
+/* layout
+*/
+.terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .command-line {
   display: flex;
   justify-content: flex-start;
   align-self: flex-start;
   align-items: center;
 }
+
+/* fonts
+*/
 .command {
   font-weight: 700;
   margin-left: 5px;
 }
 
-/* CARET */
+/* caret 
+*/
 .caret {
   background-color: var(--green);
   width: 10px;
@@ -27,7 +38,8 @@
   }
 }
 
-/* OUTPUT & TEXT ANIMATION */
+/* output
+*/
 .terminal-output {
   display: flex;
   flex-direction: column;
@@ -49,4 +61,10 @@ pre {
   to {
     width: 100%;
   }
+}
+.banner {
+  align-self: center;
+}
+.text {
+  align-self: start;
 }
