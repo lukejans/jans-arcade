@@ -12,6 +12,7 @@
   --bg: rgb(15, 25, 17);
   --text: rgb(170, 181, 207);
   --green: rgb(117, 247, 139);
+  --green2: rgba(117, 247, 139, 0.025);
   --error: rgb(231, 98, 116);
   --alt: rgb(129, 129, 129);
 }
@@ -27,6 +28,14 @@ main {
   margin: 15px;
   display: flex;
   flex-direction: column;
+}
+.select-game {
+  width: 100%;
+  padding: 5px;
+  background-color: var(--green2);
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* fonts
@@ -54,12 +63,16 @@ body {
 }
 
 svg {
+  background-color: var(--bg);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 0.85rem;
   display: inline-flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
   position: relative;
   top: 2px;
-  width: 13px;
-  max-height: 14px;
-  fill: var(--alt);
+  width: 150px;
+  min-height: 150px;
+  fill: var(--green);
 }
