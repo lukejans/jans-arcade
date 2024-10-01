@@ -1,0 +1,122 @@
+/* 
+  - #TERMINAL DISPLAY
+*/
+
+/* layout
+*/
+.terminal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.command-line {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex: none;
+  min-height: 5.5svh;
+}
+
+.command-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* fonts
+*/
+.banner {
+  color: var(--green);
+  font-weight: var(--font-w-bold);
+  text-align: center;
+  text-shadow: 0 0 4px var(--green);
+  overflow: visible;
+}
+
+.text {
+  color: var(--text);
+  font-weight: var(--font-w-reg);
+  align-self: start;
+}
+
+.prompt {
+  color: var(--green);
+  font-weight: var(--font-w-bold);
+  font-size: 1.95svh;
+  margin-right: 8px;
+}
+
+.command {
+  font-weight: var(--font-w-bold);
+  font-size: 1.95svh;
+  margin-top: 8px;
+}
+
+.command::before {
+  content: '> ';
+  color: var(--alt);
+}
+
+.alt {
+  color: var(--alt);
+}
+
+/* caret 
+*/
+.caret {
+  background-color: var(--green);
+  width: 0.9svh;
+  height: 2svh;
+  position: relative;
+  left: 0;
+  margin-left: 2px;
+  margin-top: 8px;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* output
+*/
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.85svh;
+  min-width: 100%;
+}
+
+pre {
+  position: relative;
+  display: block;
+  line-height: 1.3em;
+  font-family: var(--font-main);
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: pre;
+  animation: typing 0.5s steps(30, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+

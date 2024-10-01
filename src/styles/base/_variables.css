@@ -1,0 +1,52 @@
+/* 
+  - #ROOT VARIABLES
+*/
+
+/* Main Theme
+*/
+:root {
+  /* fonts 
+  */
+  --font-main: 'Fira Code', monospace;
+  --font-pixel: 'Pixelify Sans', sans-serif;
+  --font-w-reg: 400;
+  --font-w-bold: 700;
+  --font-s-small: 0.75rem;
+  --font-s-reg: 1rem;
+
+  /* spacing 
+  */
+  --main-margin: 1rem;
+
+  /* colors 
+  */
+  --c-dark: #202020;
+  --c-darker: #171717;
+
+  /* terminal colors 
+  */
+  --bg: #0f1911;
+  --text: #aab5cf;
+  --green: #75f78b;
+  --green2: #122417;
+  --green3: #101f14;
+  --warn: #ecbf39;
+  --error: #e76274;
+  --alt: #818181;
+
+  
+
+  /* carousel 
+  */
+  --left1: 20%; /* enter from left */
+  --left2: 30%; /* left position */
+  --left3: 50%; /* cur position */
+  --left4: 65%; /* right position */
+  --left5: 75%; /* enter from right */
+  --scale1: 0.5; /* exit & enter */
+  --scale2: 0.75; /* sides */
+  --scale3: 1; /* cur */
+  --top1: 38%;  /* exit & enter */
+  --top2: 45%; /* sides */
+  --top3: 50%; /* cur */
+}

@@ -1,0 +1,19 @@
+/* 
+  - #TYPOGRAPHY
+*/
+
+h3 {
+  color: var(--green);
+}
+
+
+.sub-heading,
+.sub-text {
+  font-size: 0.75rem;
+  color: var(--alt);
+  text-align: center;
+}
+
+.sub-heading {
+  font-weight: bold;
+}

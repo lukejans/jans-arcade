@@ -1,0 +1,22 @@
+{
+  "name": "jans-arcade",
+  "version": "1.0.0",
+  "description": "arcade to play simple games",
+  "main": "index.html",
+  "scripts": {
+    "lint:css": "stylelint '**/*.css'",
+    "fix:css": "stylelint '**/*.css' --fix"
+  },
+  "author": "Luke Janssen",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.0.5",
+    "postcss-reporter": "^7.1.0",
+    "stylelint": "^16.8.2",
+    "stylelint-config-standard": "^36.0.1"
+  }
+}

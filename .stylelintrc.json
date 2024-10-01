@@ -1,0 +1,9 @@
+{ 
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "declaration-property-unit-allowed-list": {
+      "/^border/": ["px"],
+      "/^padding|^gap/": ["rem"]
+    }
+  }
+}

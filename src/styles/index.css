@@ -1,0 +1,29 @@
+/* 
+  - #CSS INDEX
+*/
+
+/* 1. base 
+*/
+@import url("./base/_reset.css");
+@import url("./base/_personal-reset.css");
+@import url("./base/_variables.css");
+@import url("./base/_default.css");
+@import url("./base/_typography.css");
+
+/* 2. components 
+*/
+@import url("./components/_buttons.css");
+@import url("./components/_carousel.css");
+@import url("./components/_terminal.css");
+@import url("./components/_settings-menu.css");
+@import url("./components/_game-bar.css");
+
+/* 3. pages
+*/
+@import url("./pages/_entrance.css");
+@import url("./pages/_tic-tac-toe.css");
+@import url("./pages/_rock-paper-scissors.css");
+
+/* 4. utilities 
+*/
+@import url("./utilities/_visibility.css");

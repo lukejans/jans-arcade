@@ -1,0 +1,52 @@
+/* 
+  - # Tic Tac Toe
+*/
+.game#tic-tac-toe-game {
+  font-family: var(--font-pixel);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tic-game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2svw;
+  width: 100%;
+  height: 100%;
+}
+
+.tic-tile {
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--c-dark);
+  cursor: pointer;
+  color: var(--alt);
+}
+
+.tic-win {
+  color: var(--green);
+}
+
+@media (width <= 500px) {
+  .tic-tile {
+    font-size: 12svw; 
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tic-tile:hover {
+    background-color: var(--bg);
+    box-shadow: 0 0 0 2px var(--c-darker), 0 0 0 4px var(--green);
+  }
+}

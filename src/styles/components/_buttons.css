@@ -1,0 +1,59 @@
+/* 
+  - #BUTTONS
+*/
+
+button {
+  color: var(--green);
+  background-color: var(--c-dark);
+  border: 1px solid var(--alt);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  letter-spacing: 4px;
+  font-weight: var(--font-w-bold);
+
+  & svg {
+    height: 45%;
+    aspect-ratio: 1 / 1;
+    fill: var(--green);
+  }
+}
+
+.small-btn {
+  width: 45px;
+  height: 45px;
+}
+
+.big-button {
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 1.5rem 2.5rem;
+  min-width: 250px;
+  height: 60px;
+}
+
+/* click indication
+*/
+.btn-click-indication {
+  background-color: var(--green2);
+  box-shadow: 0 0 0 2px var(--c-darker), 0 0 0 4px var(--green);
+
+  & svg {
+    fill: var(--green);
+  }
+}
+
+/* hover indication 
+*/
+@media (hover: hover) and (pointer: fine) {
+  .header-icon:hover,
+  button:hover {
+    background-color: var(--green2);
+    box-shadow: 0 0 0 2px var(--c-darker), 0 0 0 4px var(--green);
+
+    & svg {
+      fill: var(--green);
+    }
+  }
+}

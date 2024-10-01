@@ -1,0 +1,214 @@
+/* 
+  - #CAROUSEL NAVIGATION
+*/
+
+/* carousel container
+*/
+.carousel-container {
+  max-width: 500px;
+  width: calc(100% - var(--main-margin) * 2);
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 3svh;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* carousel 
+*/
+.carousel {
+  width: 100%;
+  height: 10svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  overflow: visible;
+}
+
+/* carousel items
+*/
+.card {
+  background-color: var(--green2);
+  height: 75%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: var(--left3);
+  top: var(--top3);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & svg {
+    height: 60%;
+    fill: var(--green);
+  }
+}
+
+.left-carousel-position, .right-carousel-position {
+  scale: var(--scale2);
+  top: var(--top2);
+  opacity: 0.45;
+  z-index: -1;
+}
+
+.left-carousel-position {
+  left: var(--left2);
+}
+
+.right-carousel-position {
+  left: var(--left4);
+}
+
+/* carousel buttons
+*/
+.carousel-scroll-btn {
+  position: absolute;
+}
+
+.carousel-left-scroll {
+  left: 0;
+  z-index: 5;
+}
+
+.carousel-right-scroll {
+  right: 0;
+  z-index: 5;
+}
+
+/* selected indication
+*/
+.cur-selected-card-indication {
+  height: 92%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--green);
+  border-radius: 16px;
+  position: absolute;
+  z-index: 4;
+}
+
+/* play selected game button
+*/
+.select-game-btn {
+  width: 100%;
+}
+
+/* animations
+*/
+@keyframes left-dir-left-pos {
+  from {
+      top: var(--top3);
+      left: var(--left3);
+      scale: var(--scale3);
+  }
+
+  to {
+      top: var(--top2);
+      left: var(--left2);
+      scale: var(--scale2);
+  }
+}
+
+@keyframes left-dir-cur-pos {
+  from {
+      top: var(--top2);
+      left: var(--left4);
+      scale: var(--scale2);
+  }
+
+  to {
+      top: var(--top3);
+      left: var(--left3);
+      scale: var(--scale3);
+  }
+}
+
+@keyframes left-dir-right-pos {
+  from {
+      top: var(--top1);
+      left: var(--left5);
+      scale: var(--scale1);
+  }
+
+  to {
+      top: var(--top2);
+      left: var(--left4);
+      scale: var(--scale2);
+  }
+}
+
+@keyframes right-dir-left-pos {
+  from {
+      top: var(--top1);
+      left: var(--left1);
+      scale: var(--scale1);
+  }
+
+  to {
+      top: var(--top2);
+      left: var(--left2);
+      scale: var(--scale2);
+  }
+}
+
+@keyframes right-dir-cur-pos {
+  from {
+      top: var(--top2);
+      left: var(--left2);
+      scale: var(--scale2);
+  }
+
+  to {
+      top: var(--top3);
+      left: var(--left3);
+      scale: var(--scale3);
+  }
+}
+
+@keyframes right-dir-right-pos {
+  from {
+      top: var(--top3);
+      left: var(--left3);
+      scale: var(--scale3);
+  }
+
+  to {
+      top: var(--top2);
+      left: var(--left4);
+      scale: var(--scale2);
+  }
+}
+
+/* animation toggle classes
+*/
+.left-animation-to-left {
+  animation: left-dir-left-pos 0.3s ease-in-out;
+}
+
+.left-animation-to-cur {
+  animation: left-dir-cur-pos 0.3s ease-in-out;
+}
+
+.left-animation-to-right {
+  animation: left-dir-right-pos 0.3s ease-in-out;
+}
+
+.right-animation-to-left {
+  animation: right-dir-left-pos 0.3s ease-in-out;
+}
+
+.right-animation-to-cur {
+  animation: right-dir-cur-pos 0.3s ease-in-out;
+}
+
+.right-animation-to-right {
+  animation: right-dir-right-pos 0.3s ease-in-out;
+}

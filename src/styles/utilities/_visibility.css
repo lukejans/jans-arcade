@@ -1,0 +1,31 @@
+/* 
+  - #VISIBILITY
+*/
+
+/* general 
+*/
+.hidden {
+  display: none !important;
+}
+
+/* disabled button
+*/
+button:disabled {
+  color: var(--alt);
+}
+
+/* appear
+*/
+.appear {
+  animation: appear 0.75s linear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

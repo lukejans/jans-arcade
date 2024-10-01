@@ -1,0 +1,50 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 50%; 
+  transform: translateX(-50%);
+  max-width: 500px;
+  width: calc(100% - var(--main-margin) * 2);
+  border-radius: 8px;
+  max-height: 40px;
+  height: 100%;
+  padding-top: 12px;
+  z-index: 10;
+
+  & > * {
+    display: inline-block;
+  }
+}
+
+
+#exit-icon {
+  position: absolute;
+  left: 0;
+}
+
+.header-icon-container {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-dark);
+  border-radius: 4px;
+  height: 100%;
+  aspect-ratio: 1/1;
+  border: none;
+  cursor: pointer;
+
+  & svg {
+    width: 50%;
+    fill: var(--green);
+  }
+}

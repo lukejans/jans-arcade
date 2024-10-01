@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Disable Device Rotation -->
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
+    <!-- SEO -->
+    <meta name="description" 
+          content="Jans Arcade, classic pass & play games built from the odin project.">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="./assets/icons/site.webmanifest">
+    <link rel="mask-icon" href="./assets/icons/safari-pinned-tab.svg" color="#3dcc18">
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="./assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#0f1911">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Pixelify+Sans&display=swap"
+      rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/styles/postcss.css" />
+
+    <!-- JavaScript -->
+    <script type="module" src="./src/scripts/index.js"></script>
+    <script type="module" src="./src/scripts/games/controller.js"></script>
+    <script type="module" src="./src/scripts/interface/terminal.js"></script>
+    <script type="module" src="./src/scripts/interface/carousel.js"></script>
+
+    <title>Jans Arcade</title>
+  </head>
+  <body>
+    <!-- App Controls -->
+    <!--? possibly build this feature out  
+    <header class="hidden">
+      <div class="header-icon" id="exit-icon">
+        <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.3585 10.2183V11.7383H21.8285V13.2683H20.3085V14.7883H18.7885V17.8383H20.3085V19.3583H21.8285V20.8883H23.3585V22.4083H24.8785V17.8383H30.9785V14.7883H24.8785V10.2183H23.3585Z"/>
+          <path d="M23.3585 25.4583H21.8285V28.5083H23.3585V25.4583Z"/>
+          <path d="M23.3585 2.59824H21.8285V7.16824H23.3585V2.59824Z"/>
+          <path d="M15.7385 31.5482V30.0282H21.8285V28.5082H15.7385V8.69824H14.2185V31.5482H15.7385Z"/>
+          <path d="M14.2185 31.5482H9.63853V33.0782H14.2185V31.5482Z"/>
+          <path d="M12.6885 17.8383H11.1685V20.8883H12.6885V17.8383Z"/>
+          <path d="M14.2185 7.16824H11.1685V8.69824H14.2185V7.16824Z"/>
+          <path d="M9.63854 30.0283H6.59854V31.5483H9.63854V30.0283Z"/>
+          <path d="M11.1685 5.64825H8.11853V7.16825H11.1685V5.64825Z"/>
+          <path d="M6.59854 28.5082H3.54854V30.0282H6.59854V28.5082Z"/>
+          <path d="M8.11853 4.12823H5.06853V5.64823H8.11853V4.12823Z"/>
+          <path d="M3.54853 1.07825V2.59825H2.02853V28.5082H3.54853V4.12825H5.06853V2.59825H21.8285V1.07825H3.54853Z"/>
+        </svg>
+      </div>
+      <div class="header-icon-container">
+        <div class="header-icon " id="audio-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0135498 2.92023 32 27.43">
+            <path d="M32.0136 10.5402H30.4836V22.7302H32.0136V10.5402ZM30.4835 22.7302H28.9635V24.2502H30.4835V22.7302ZM30.4835 9.01025H28.9635V10.5403H30.4835V9.01025ZM28.9635 24.2502H27.4435V25.7702H28.9635V24.2502ZM28.9635 13.5802H27.4435V19.6802H28.9635V13.5802ZM28.9635 7.49023H27.4435V9.01023H28.9635V7.49023ZM27.4435 19.6802H25.9135V21.2002H27.4435V19.6802ZM27.4435 12.0602H25.9135V13.5802H27.4435V12.0602ZM25.9136 15.1102H24.3936V18.1602H25.9136V15.1102ZM22.8636 5.97021H21.3436V27.3002H22.8636V5.97021ZM21.3435 27.3002H19.8235V28.8202H21.3435V27.3002ZM21.3435 4.44025H19.8235V5.97025H21.3435V4.44025ZM19.8236 28.8203H15.2536V30.3503H19.8236V28.8203ZM18.2935 22.7302H16.7735V24.2502H18.2935V22.7302ZM18.2935 9.01025H16.7735V10.5403H18.2935V9.01025ZM19.8236 2.92023H15.2536V4.44023H19.8236V2.92023ZM16.7736 10.5402H15.2536V22.7302H16.7736V10.5402ZM15.2536 27.3002H13.7236V28.8202H15.2536V27.3002ZM15.2536 4.44025H13.7236V5.97025H15.2536V4.44025ZM13.7236 25.7702H12.2036V27.3002H13.7236V25.7702ZM13.7236 5.97021H12.2036V7.49021H13.7236V5.97021ZM12.2036 24.2502H10.6736V25.7702H12.2036V24.2502ZM12.2036 7.49023H10.6736V9.01023H12.2036V7.49023ZM10.6735 22.7302H9.15355V24.2502H10.6735V22.7302ZM10.6735 9.01025H9.15355V10.5403H10.6735V9.01025ZM9.15355 21.2003H7.63354V22.7303H9.15355V21.2003ZM9.15355 10.5402H7.63354V12.0602H9.15355V10.5402ZM7.63355 12.0602H1.53355V13.5802H0.0135498V19.6802H1.53355V21.2002H7.63355V12.0602ZM4.58355 15.1102H3.06355V18.1602H1.53355V15.1102H3.06355V13.5802H4.58355V15.1102Z"/>
+          </svg>
+        </div>
+        <div class="header-icon" id="no-audio-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0135 2 32 29.05">
+            <path d="M 32.0136 10.5402 H 30.4836 V 22.7302 H 32.0136 V 10.5402 Z M 30.4835 22.7302 H 28.9635 V 24.2502 H 30.4835 V 22.7302 Z M 30.4835 9.0102 H 28.9635 V 10.5403 H 30.4835 V 9.0102 Z M 28.9635 24.2502 H 27.4435 V 25.7702 H 28.9635 V 24.2502 Z M 28.9635 13.5802 H 27.4435 V 19.6802 H 28.9635 V 13.5802 Z M 28.9635 7.4902 H 27.4435 V 9.0102 H 28.9635 V 7.4902 Z M 27.4435 19.6802 H 25.9135 V 21.2002 H 27.4435 V 19.6802 Z M 27.4435 12.0602 H 25.9135 V 13.5802 H 27.4435 V 12.0602 Z M 25.9136 15.1102 H 24.3936 V 18.1602 H 25.9136 V 15.1102 Z M 22.8636 5.9702 H 21.3436 V 27.3002 H 22.8636 V 5.9702 Z M 21.3435 27.3002 H 19.8235 V 28.8202 H 21.3435 V 27.3002 Z M 21.3435 4.4403 H 19.8235 V 5.9703 H 21.3435 V 4.4403 Z M 19.8236 28.8203 H 15.2536 V 30.3503 H 19.8236 V 28.8203 Z M 18.2935 22.7302 H 16.7735 V 24.2502 H 18.2935 V 22.7302 Z M 18.2935 9.0103 H 16.7735 V 10.5403 H 18.2935 V 9.0103 Z M 19.8236 2.9202 H 15.2536 V 4.4402 H 19.8236 V 2.9202 Z M 16.7736 10.5402 H 15.2536 V 22.7302 H 16.7736 V 10.5402 Z M 15.2536 27.3002 H 13.7236 V 28.8202 H 15.2536 V 27.3002 Z M 15.2536 4.4403 H 13.7236 V 5.9703 H 15.2536 V 4.4403 Z M 13.7236 25.7702 H 12.2036 V 27.3002 H 13.7236 V 25.7702 Z M 13.7236 5.9702 H 12.2036 V 7.4902 H 13.7236 V 5.9702 Z M 12.2036 24.2502 H 10.6736 V 25.7702 H 12.2036 V 24.2502 Z M 12.2036 7.4902 H 10.6736 V 9.0102 H 12.2036 V 7.4902 Z M 10.6735 22.7302 H 9.1535 V 24.2502 H 10.6735 V 22.7302 Z M 10.6735 9.0102 H 9.1535 V 10.5403 H 10.6735 V 9.0102 Z M 9.1535 21.2003 H 7.6335 V 22.7303 H 9.1535 V 21.2003 Z M 9.1535 10.5402 H 7.6335 V 12.0602 H 9.1535 V 10.5402 Z M 7.6335 12.0602 H 1.5335 V 13.5802 H 0.0135 V 19.6802 H 1.5335 V 21.2002 H 7.6335 V 12.0602 Z M 4.5835 15.1102 H 3.0636 V 18.1602 H 1.5335 V 15.1102 H 3.0636 V 13.5802 H 4.5835 V 15.1102 Z Z Z Z M 4.57 29.533 V 28.013 H 6.09 V 26.483 H 7.62 V 24.963 H 9.14 V 23.433 H 10.67 V 21.913 H 12.19 V 20.393 H 13.71 V 18.863 H 15.24 V 17.342 H 16.76 V 15.822 H 18.29 V 14.293 H 19.81 V 12.773 H 21.33 V 11.243 H 22.86 V 9.723 H 24.38 V 8.203 H 25.9 V 6.673 H 27.43 V 5.153 H 28.95 V 3.633 H 30.48 V 2 H 28.95 V 2 H 27.43 V 3.633 H 25.9 V 5.153 H 24.38 V 6.673 H 22.86 V 8.203 H 21.33 V 9.723 H 19.81 V 11.243 H 18.29 V 12.773 H 16.76 V 14.293 H 15.24 V 15.822 H 13.71 V 17.342 H 12.19 V 18.863 H 10.67 V 20.393 H 9.14 V 21.913 H 7.62 V 23.433 H 6.09 V 24.963 H 4.57 V 26.483 H 3.05 V 28.013 H 1.52 H 1.52 V 31.052 H 3.05 V 29.533 H 4.57 Z"/>
+          </svg>
+        </div>
+        <div class="header-icon" id="rule-book-icon">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.80988 1.52H28.1899V3.05H26.6699V4.57H28.1899V7.62H29.7199V30.48H31.2399V6.1H29.7199V1.52H31.2399V0H3.80988V1.52Z"/>
+            <path d="M6.85988 30.48V7.61998H15.9999V6.09998H3.80988V7.61998H5.33988V30.48H3.80988V32H29.7199V30.48H6.85988Z"/>
+            <path d="M25.1499 10.67H23.6199V6.10005H22.0999V4.57005H23.6199V3.05005H15.9999V4.57005H17.5299V6.10005H19.0499V21.33H20.5699V19.81H22.0999V18.29H23.6199V19.81H25.1499V21.33H26.6699V6.10005H25.1499V10.67Z"/>
+            <path d="M25.1499 4.56995H23.6199V6.09995H25.1499V4.56995Z"/>
+            <path d="M14.4799 3.05005H5.33987V4.57005H14.4799V3.05005Z"/>
+            <path d="M3.80989 28.95H2.28989V30.4799H3.80989V28.95Z"/>
+            <path d="M3.80989 1.52002H2.28989V3.05002H3.80989V1.52002Z"/>
+            <path d="M2.28989 6.10005H3.80989V4.57005H2.28989V3.05005H0.759888V28.9501H2.28989V6.10005Z"/>
+          </svg>            
+        </div>
+      </div>
+    </header>
+    -->
+
+    <!-- Entrance Screen --> 
+    <section id="enter-screen" class="entrance-screen">
+        <div class="arcade-logo">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30.47 4.57H28.95V3.05H27.42V1.52H25.9V0H3.04V6.1H4.57V7.62H6.09V6.1H24.38V7.62H25.9V22.86H24.38V24.38H22.85V25.9H3.04V24.38H1.52V25.9H0V32H1.52V27.43H21.33V32H32V6.1H30.47V4.57ZM6.09 4.57H4.57V1.52H6.09V4.57ZM9.14 4.57H7.61V1.52H9.14V4.57ZM22.85 4.57H10.66V1.52H22.85V4.57ZM30.47 15.24H28.95V7.62H27.42V6.1H25.9V4.57H24.38V3.05H25.9V4.57H27.42V6.1H28.95V7.62H30.47V15.24Z" fill="#75f78b"/>
+            <path d="M21.33 15.24H19.8V16.76H21.33V15.24Z" fill="#00ff6a"/>
+            <path d="M21.33 22.86H16.76V24.38H21.33V22.86Z" fill="#eda600"/>
+            <path d="M19.8 12.19H18.28V13.71H19.8V12.19Z" fill="#00ff6a"/>
+            <path d="M19.8 32V28.95H15.23V32H16.76V30.48H18.28V32H19.8Z" fill="#75f78b"/>
+            <path d="M19.8 16.76H13.71V18.29H19.8V16.76Z" fill="#00ff6a"/>
+            <path d="M15.23 12.19H13.71V13.71H15.23V12.19Z" fill="#00ff6a"/>
+            <path d="M13.71 15.24H12.19V16.76H13.71V15.24Z" fill="#00ff6a"/>
+            <path d="M12.19 22.86H10.66V24.38H12.19V22.86Z" fill="#ff2b2b"/>
+            <path d="M24.38 21.33V9.14H9.14001V21.33H24.38ZM10.66 10.67H22.85V19.81H10.66V10.67Z" fill="#75f78b"/>
+            <path d="M9.13999 22.86H7.60999V24.38H9.13999V22.86Z" fill="#2d61ff"/>
+            <path d="M7.61003 7.62H6.09003V21.33H7.61003V7.62Z" fill="#75f78b"/>
+            <path d="M6.09001 21.33H4.57001V22.86H6.09001V21.33Z" fill="#75f78b"/>
+            <path d="M4.56998 22.86H3.03998V24.38H4.56998V22.86Z" fill="#75f78b"/>
+          </svg>
+        </div>
+      
+        <button class="big-button blink" id="enter-arcade-btn">LOADING...</button>
+    </section>
+
+    <!-- Arcade Content -->
+    <main id="arcade-screen" class="hidden">
+      <!-- Terminal Display -->
+      <section class="terminal">
+        <div class="terminal-output">
+          <a id="inject-terminal-text"></a>
+        </div>
+        <div class="command-line">
+          <p class="prompt">
+            guest<span class="alt">@</span>jansarcade
+          </p>
+          <div class="command-wrapper">
+            <p class="command"></p>
+            <div class="caret blink"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Games -->
+      <section class="game-container hidden" id="game-container" >
+        <!-- Tic Tac Toe -->
+        <section class="game hidden" id="tic-tac-toe-game">
+          <!-- Game Board-->
+          <div class="tic-game-board">
+            <!-- Row A -->
+            <button class="tic-tile" value="0"></button>
+            <button class="tic-tile" value="1"></button>
+            <button class="tic-tile" value="2"></button>
+            <!-- Row B -->
+            <button class="tic-tile" value="3"></button>
+            <button class="tic-tile" value="4"></button>
+            <button class="tic-tile" value="5"></button>
+            <!-- Row C -->
+            <button class="tic-tile" value="6"></button>
+            <button class="tic-tile" value="7"></button>
+            <button class="tic-tile" value="8"></button>
+          </div>
+        </section>
+
+        <!-- Rock Paper Scissors -->
+        <section class="game hidden" id="rock-paper-scissors-game">
+          <section class="rps-round-info">
+            <p id="rps-round-number">1</p>
+            <p class="rps-round-title rps-title">&#60;ROUND&#62;</p>
+          </section>
+          <section class="rps-game-information">
+            <p class="rps-title">&#60;SCORE&#62;</p>
+            <p class="rps-title">&#60;CHOICES&#62;</p>
+            <p id="rps-p1-score">p1: 0</p>
+            <p id="rps-p1-choice">p1: _</p>
+            <p id="rps-p2-score">p2: 0</p>
+            <p id="rps-p2-choice">p2: _</p>
+          </section>
+          <section class="rps-play-buttons">
+            <button class="small-btn" id="rock">
+              <svg viewBox="0 0 26 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.62 9.72V11.24H23.67V15.81H25.19V5.14H23.67V9.72H20.62Z"/>
+                <path d="M22.14 18.86H6.90999V17.34H5.37999V18.86H3.85999V23.43H25.19V18.86H23.67V15.81H22.14V18.86ZM22.14 21.91H19.1V20.38H22.14V21.91Z"/>
+                <path d="M23.67 3.62H22.14V5.14H23.67V3.62Z"/>
+                <path d="M19.1 9.72H20.62V3.62H22.14V2.1H19.1V9.72Z"/>
+                <path d="M19.1 9.72H16.05V11.24H19.1V9.72Z"/>
+                <path d="M13 11.24H8.42999V12.76H13V11.24Z"/>
+                <path d="M9.94997 5.14H8.42997V6.67H11.48V2.1H14.53V6.67H11.48V8.19H13V11.24H14.53V9.72H16.05V2.1H19.1V0.57H6.90997V2.1H9.94997V5.14Z"/>
+                <path d="M8.42997 9.72H6.90997V11.24H8.42997V9.72Z"/>
+                <path d="M8.42999 5.14V3.62H6.90999V2.1H5.37999V3.62H3.85999V5.14H8.42999Z"/>
+                <path d="M5.37999 15.81H3.85999V17.34H5.37999V15.81Z"/>
+                <path d="M3.86003 12.76H2.34003V15.81H3.86003V12.76Z"/>
+                <path d="M3.86003 5.14H2.34003V6.67H3.86003V5.14Z"/>
+                <path d="M2.34 6.67H0.809998V12.76H2.34V6.67Z"/>
+                </svg>               
+            </button>
+            <button class="small-btn" id="paper">
+              <svg viewBox="0 0 26 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25.19 7.62H23.66V19.81H25.19V7.62Z"/>
+                <path d="M23.66 19.81H22.14V24.39H23.66V19.81Z"/>
+                <path d="M20.62 27.43H6.89998V25.91H5.37998V27.43H3.84998V32H23.66V27.43H22.14V24.39H20.62V27.43ZM20.62 30.48H17.57V28.96H20.62V30.48Z"/>
+                <path d="M19.09 15.24H20.62V7.62H23.66V6.1H20.62V4.58H19.09V15.24Z"/>
+                <path d="M14.52 15.24H16.05V4.58H19.09V3.05H16.05V1.53H14.52V15.24Z"/>
+                <path d="M14.52 16.77H13V19.81H14.52V16.77Z"/>
+                <path d="M14.52 0H11.47V1.53H14.52V0Z"/>
+                <path d="M13 15.24H11.47V16.77H13V15.24Z"/>
+                <path d="M13 19.81H8.42999V21.34H13V19.81Z"/>
+                <path d="M9.95002 13.72H8.43003V15.24H11.47V1.53H6.90002V3.05H9.95002V13.72Z"/>
+                <path d="M8.43003 18.29H6.90002V19.81H8.43003V18.29Z"/>
+                <path d="M8.42998 13.72V12.19H6.89998V3.05H5.37998V12.19H3.84998V13.72H8.42998Z"/>
+                <path d="M5.37998 24.39H3.84998V25.91H5.37998V24.39Z"/>
+                <path d="M3.85002 21.34H2.33002V24.39H3.85002V21.34Z"/>
+                <path d="M3.85002 13.72H2.33002V15.24H3.85002V13.72Z"/>
+                <path d="M2.33 15.24H0.809998V21.34H2.33V15.24Z"/>
+              </svg>              
+            </button>
+            <button class="small-btn" id="scissors">
+              <svg viewBox="0 0 26 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.38 18.29V19.81H24.43V24.38H25.95V13.71H24.43V18.29H21.38Z"/>
+                <path d="M22.91 27.43H7.67V25.91H6.14V27.43H4.62V32H25.95V27.43H24.43V24.38H22.91V27.43ZM22.91 30.48H19.86V28.95H22.91V30.48Z"/>
+                <path d="M19.86 18.29H21.38V13.71H24.43V12.19H19.86V18.29Z"/>
+                <path d="M21.38 1.52H19.86V6.1H21.38V1.52Z"/>
+                <path d="M19.86 6.1H18.33V9.14H19.86V6.1Z"/>
+                <path d="M19.86 18.29H16.81V19.81H19.86V18.29Z"/>
+                <path d="M16.81 12.19H19.86V10.67H18.33V9.14H16.81V12.19Z"/>
+                <path d="M19.86 0H15.29V1.52H19.86V0Z"/>
+                <path d="M15.29 19.81V18.29H16.81V12.19H15.29V16.76H13.76V19.81H15.29Z"/>
+                <path d="M15.29 1.52H13.76V6.1H15.29V1.52Z"/>
+                <path d="M13.76 15.24H12.24V16.76H13.76V15.24Z"/>
+                <path d="M13.76 6.1H12.24V9.14H13.76V6.1Z"/>
+                <path d="M13.76 19.81H9.19V21.33H13.76V19.81Z"/>
+                <path d="M12.24 13.71H9.19V15.24H12.24V13.71Z"/>
+                <path d="M10.72 10.67V12.19H12.24V9.14H9.19V10.67H10.72Z"/>
+                <path d="M9.18998 18.29H7.66998V19.81H9.18998V18.29Z"/>
+                <path d="M9.18998 6.1H7.66998V9.14H9.18998V6.1Z"/>
+                <path d="M9.18999 12.19H4.62V13.71H9.18999V12.19Z"/>
+                <path d="M7.66998 1.52H6.13998V6.1H7.66998V1.52Z"/>
+                <path d="M6.14 24.38H4.62V25.91H6.14V24.38Z"/>
+                <path d="M4.61998 21.33H3.09998V24.38H4.61998V21.33Z"/>
+                <path d="M4.61998 13.71H3.09998V15.24H4.61998V13.71Z"/>
+                <path d="M4.61998 9.14H3.09998V12.19H4.61998V9.14Z"/>
+                <path d="M6.13998 0H1.56998V1.52H6.13998V0Z"/>
+                <path d="M3.09998 15.24H1.56998V21.33H3.09998V15.24Z"/>
+                <path d="M3.09998 6.1H1.56998V9.14H3.09998V6.1Z"/>
+                <path d="M1.56999 1.52H0.0499878V6.1H1.56999V1.52Z"/>
+              </svg>  
+            </button>
+          </section>
+        </section>
+
+        <!-- Settings Menu -->
+        <section class="game-menu appear hidden" id="game-settings-menu">
+          <!-- Menu -->
+          <form id="game-settings-form">
+            <!-- Mode Menu -->
+            <section class="menu-body hidden" id="mode-menu">
+              <!-- Mode -->
+              <span class="sub-heading menu-sub-heading">MODE</span>
+              <!-- PvP -->
+              <label  class="menu-option-wrapper">
+                <input type="radio" name="mode" value="pvp">
+                <div id="pvp" class="menu-option">
+                  <div>
+                    <h4>PvP</h4>
+                    <p class="sub-text">pass & play</p>
+                  </div>
+                  <div class="menu-option-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="6.09 6.09003 19.81 21.34">
+                      <path d="M24.38 24.38H22.85V27.43H25.9V25.9H24.38V24.38ZM22.85 22.86H19.81V24.38H22.85V22.86ZM21.33 19.81H19.81V21.33H21.33V19.81ZM19.81 13.71H18.28V16.76H19.81V13.71ZM19.81 21.33H12.19V22.86H19.81V21.33ZM18.28 18.28H13.71V19.81H18.28V18.28ZM13.71 13.71H12.19V16.76H13.71V13.71ZM12.19 22.86H9.14V24.38H12.19V22.86ZM12.19 19.81H10.66V21.33H12.19V19.81Z M10.66 12.19H12.19V10.67H19.81V12.19H21.33V19.81H22.85V9.14003H21.33V7.62003H19.81V6.09003H12.19V7.62003H10.66V9.14003H9.14V19.81H10.66V12.19Z M7.62 24.38V25.9H6.09V27.43H9.14V24.38H7.62Z"/>
+                    </svg>
+                  </div>
+                </div>
+              </label>
+              <!-- PvC -->
+              <label class="menu-option-wrapper">
+                <input type="radio" name="mode" value="pvc">
+                <div id="pvc" class="menu-option">
+                  <div>
+                    <h4>PvC</h4>
+                    <p class="sub-text">play a computer</p>
+                  </div>
+                  <div class="menu-option-logo">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M30.47 18.28V7.62H28.95V16.76H27.43V15.24H25.9V27.43H27.43V25.9H30.47V24.38H32V18.28H30.47Z"/>
+                      <path d="M25.9 12.19H24.38V15.24H25.9V12.19Z"/>
+                      <path d="M6.09 27.43V28.95H7.62V30.48H9.14V28.95H22.85V30.48H24.38V28.95H25.9V27.43H6.09Z"/>
+                      <path d="M24.38 18.28H22.85V21.33H24.38V18.28Z"/>
+                      <path d="M24.38 10.67H22.85V12.19H24.38V10.67Z"/>
+                      <path d="M22.85 16.76H19.81V18.28H22.85V16.76Z"/>
+                      <path d="M22.85 30.48H9.14001V32H22.85V30.48Z"/>
+                      <path d="M22.85 21.33H19.81V22.86H22.85V21.33Z"/>
+                      <path d="M19.81 18.28H18.28V21.33H19.81V18.28Z"/>
+                      <path d="M19.81 1.52H18.28V3.05H19.81V1.52Z"/>
+                      <path d="M18.28 24.38H13.71V25.9H18.28V24.38Z"/>
+                      <path d="M18.28 0H13.71V1.52H18.28V0Z"/>
+                      <path d="M13.71 18.28H12.19V21.33H13.71V18.28Z"/>
+                      <path d="M13.71 1.52H12.19V3.05H13.71V1.52Z"/>
+                      <path d="M12.19 16.76H9.14001V18.28H12.19V16.76Z"/>
+                      <path d="M22.85 10.67V9.14H16.76V4.57H18.28V3.05H13.71V4.57H15.23V9.14H9.14001V10.67H22.85Z"/>
+                      <path d="M12.19 21.33H9.14001V22.86H12.19V21.33Z"/>
+                      <path d="M9.14 18.28H7.62V21.33H9.14V18.28Z"/>
+                      <path d="M9.14 10.67H7.62V12.19H9.14V10.67Z"/>
+                      <path d="M7.62 12.19H6.09V15.24H7.62V12.19Z"/>
+                      <path d="M6.09 15.24H4.57V16.76H3.04V7.62H1.52V18.28H0V24.38H1.52V25.9H4.57V27.43H6.09V15.24Z"/>
+                      </svg>
+                  </div>
+                </div>
+              </label>
+              <!-- CvC -->
+              <label class="menu-option-wrapper">
+                <input type="radio" name="mode" value="cvc">
+                <div id="cvc" class="menu-option">
+                  <div>
+                    <h4>CvC</h4>
+                    <p class="sub-text">interesting...</p>
+                  </div>
+                  <div class="menu-option-logo">
+                    <svg viewBox="0 0 33 32" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m32.85 22.86h-3.05v3.05h3.05v-3.05z"/>
+                      <path d="m29.8 25.91h-1.52v1.52h1.52v-1.52z"/>
+                      <path d="m29.8 16.76v-4.57h1.53v-4.57h-4.57v4.57h1.52v4.57h1.52z"/>
+                      <path d="m28.28 27.43h-1.52v1.53h1.52v-1.53z"/>
+                      <path d="m28.28 16.76h-1.52v1.53h1.52v-1.53z"/>
+                      <path d="m26.76 28.96h-1.53v3.04h1.53v-3.04z"/>
+                      <path d="m26.76 18.29h-1.53v1.52h1.53v-1.52z"/>
+                      <path d="m25.23 19.81h-1.52v1.53h1.52v-1.53z"/>
+                      <path d="m23.71 21.34h-1.53v10.66h1.53v-10.66z"/>
+                      <path d="m23.71 16.76v-12.19h1.52v-4.57h-4.57v4.57h1.52v12.19h1.53zm-1.53-15.23h1.53v1.52h-1.53v-1.52z"/>
+                      <path d="m22.18 16.76h-1.52v1.53h1.52v-1.53z"/>
+                      <path d="m20.66 18.29h-1.52v13.71h1.52v-13.71z"/>
+                      <path d="m14.56 15.24h1.53v16.76h1.52v-16.76h1.53v-4.57h-4.58v4.57z"/>
+                      <path d="m14.56 18.29h-1.52v13.71h1.52v-13.71z"/>
+                      <path d="m13.04 16.76h-1.52v1.53h1.52v-1.53z"/>
+                      <path d="m11.52 24.38h-1.53v7.62h1.53v-7.62z"/>
+                      <path d="m11.52 9.15h1.52v-4.58h-4.57v4.58h1.52v7.61h1.53v-7.61z"/>
+                      <path d="m9.9902 22.86h-1.52v1.52h1.52v-1.52z"/>
+                      <path d="m8.4702 28.96h-1.52v3.04h1.52v-3.04z"/>
+                      <path d="m8.4702 21.34h-1.52v1.52h1.52v-1.52z"/>
+                      <path d="m8.4703 19.81v-4.57h-4.57v4.57h1.52v1.53h1.53v-1.53h1.52zm-3.05-1.52v-1.53h1.53v1.53h-1.53z"/>
+                      <path d="m6.9502 27.43h-1.53v1.53h1.53v-1.53z"/>
+                      <path d="m5.4203 25.91h-1.52v1.52h1.52v-1.52z"/>
+                      <path d="m3.9002 22.86h-3.05v3.05h3.05v-3.05z"/>
+                      </svg>
+                  </div>
+                </div>
+              </label>
+            </section>
+            <!-- PvC Menu -->
+            <section class="menu-body hidden" id="pvc-menu">
+              <!-- Marker -->
+              <span class="sub-heading menu-sub-heading">I PLAY AS</span>
+              <div class="menu-option-marker-pick" id="tic-tac-toe-marker-pick">
+                <label>x
+                  <input type="radio" name="marker" value="x">
+                </label>
+                <label>?
+                  <input type="radio" name="marker" value="random">
+                </label>
+                <label>o
+                  <input type="radio" name="marker" value="o">
+                </label>
+              </div>
+
+              <!-- Difficulty -->
+              <span class="sub-heading menu-sub-heading">DIFFICULTY</span>
+              <!-- Hard -->
+              <label class="menu-option-wrapper">
+                  <input type="radio" name="difficulty" value="hard">
+                  <div class="menu-option">
+                    <div>
+                      <h4>Hard</h4>
+                      <p class="sub-text">you won't win</p>
+                    </div>
+                    <div class="menu-difficulty-logo">
+                      <div class="diff-circle diff-circle-filled"></div>
+                      <div class="diff-circle diff-circle-filled"></div>
+                      <div class="diff-circle diff-circle-filled"></div>
+                    </div>
+                  </div>
+              </label>
+              <!-- Medium -->
+              <label class="menu-option-wrapper">
+                  <input type="radio" name="difficulty" value="medium">
+                  <div class="menu-option">
+                    <div>
+                      <h4>Medium</h4>
+                      <p class="sub-text">worthy opponent</p>
+                    </div>
+                    <div class="menu-difficulty-logo">
+                      <div class="diff-circle diff-circle-filled"></div>
+                      <div class="diff-circle diff-circle-filled"></div>
+                      <div class="diff-circle"></div>
+                    </div>
+                  </div>
+              </label>
+              <!-- Easy -->
+              <label class="menu-option-wrapper">
+                  <input type="radio" name="difficulty" value="easy">
+                  <div class="menu-option">
+                    <div>
+                      <h4>Easy</h4>
+                      <p class="sub-text">lemon Squeezy</p>
+                    </div>
+                    <div class="menu-difficulty-logo">
+                      <div class="diff-circle diff-circle-filled"></div>
+                      <div class="diff-circle"></div>
+                      <div class="diff-circle"></div>
+                    </div>
+                  </div>
+              </label>
+            </section>
+          </form>
+          <!-- Menu Buttons -->
+          <section class="menu-buttons">
+            <button class="settings-menu-back-btn small-btn" id="settings-back-btn" aria-label="go back">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0135498 9.77539 9.14 13.72">
+                <path d="M1.53355 15.8754H0.0135498V17.3954H1.53355V15.8754ZM3.05355 14.3454H1.53355V15.8754H3.05355V14.3454ZM3.05355 17.3954H1.53355V18.9254H3.05355V17.3954ZM4.58354 12.8254H3.05354V14.3454H4.58354V12.8254ZM4.58354 18.9254H3.05354V20.4454H4.58354V18.9254ZM6.10356 11.3054H4.58356V12.8254H6.10356V11.3054ZM6.10356 20.4454H4.58356V21.9654H6.10356V20.4454ZM7.62355 9.77539H6.10355V11.3054H7.62355V9.77539ZM9.15355 11.3054H7.62355V21.9654H9.15355V11.3054ZM7.62355 21.9654H6.10355V23.4954H7.62355V21.9654Z"/>
+              </svg>
+            </button>
+            <button class="settings-menu-btn" id="settings-next-btn" disabled>NEXT</button>
+            <button class="settings-menu-btn hidden" id="settings-submit-btn" form="game-settings-form" type="submit" disabled>SUBMIT</button>
+          </section>
+        </section>
+
+        <!-- Game Over Menu -->
+        <section class="game-menu game-over-menu hidden appear" id="game-over-menu">
+          <h4>GAME OVER!</h4>
+          <div class="game-over-icon">
+            <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg">
+              <path d="m32.85 25.965h-1.52v1.52h1.52v-1.52z"/>
+              <path d="m32.85 15.295v-3.05h-1.52v1.53h-1.53v-3.05h-1.52v6.1h-1.53v-1.53h-1.52v3.05h3.05v4.57h-7.62v1.53h12.19v-1.53h-3.05v-7.62h3.05z"/>
+              <path d="m32.85 1.5854h-3.05v1.52h3.05v-1.52z"/>
+              <path d="m28.28 25.965h-1.53v1.52h1.53v-1.52z"/>
+              <path d="m28.28 4.6354h-3.05v1.52h3.05v-1.52z"/>
+              <path d="m22.18 25.965h-1.52v1.52h1.52v-1.52z"/>
+              <path d="m20.66 10.725h-4.57v1.52h4.57v1.53h1.52v-7.62h-1.52v4.57z"/>
+              <path d="m14.56 16.825h-3.04v1.52h3.04v1.52h-3.04v-1.52h-1.53v6.1h4.57v1.52h-4.57v1.52h-4.57v1.535h1.53v3.04h3.04v-1.52h-1.52v-1.52h4.57v-1.53h1.52v1.53h3.05v-1.53h-1.52v-6.09h1.52v1.52h1.53v-3.05h-3.05v-4.57h4.57v-1.52h-6.1v3.045zm0 6.09h-3.04v-1.52h3.04v1.52z"/>
+              <path d="m14.56 1.5854h-3.04v1.52h3.04v-1.52z"/>
+              <path d="m11.52 7.6754h-1.53v3.05h1.53v-3.05z"/>
+              <path d="m20.66 4.6354h-12.19v1.52h12.19v-1.52z"/>
+              <path d="m9.9902 24.445h-1.52v1.52h1.52v-1.52z"/>
+              <path d="m8.4702 6.1554h-1.52v10.67h1.52v-10.67z"/>
+              <path d="m6.9502 16.825h-1.53v4.57h1.53v-4.57z"/>
+              <path d="m5.4202 25.965h-1.52v1.52h1.52v-1.52z"/>
+              <path d="m5.4202 21.395h-1.52v1.52h1.52v-1.52z"/>
+              <path d="m3.9002 24.445h-1.53v1.52h1.53v-1.52z"/>
+              <path d="m3.9002 6.1554h-3.05v1.52h3.05v-1.52z"/>
+              <path d="m2.3702 21.395h1.53v-1.53h-1.53v-1.52h-1.52v6.1h1.52v-3.05z"/>
+            </svg>
+          </div>
+          <button class="big-button" id="play-again-btn">PLAY AGAIN</button>
+          <button class="big-button" id="go-home-btn">HOME</button>
+        </section>
+      </section>
+
+      <!-- Carousel -->
+      <nav class="carousel-container appear hidden">
+        <!-- Carousel Navigation -->
+        <div class="carousel">
+          <!-- Carousel Items -->
+          <div id="chess" class="card left-carousel-position">
+            <svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.425 26.66H21.905V29.71H23.425V26.66Z"/>
+            <path d="M21.905 29.71H2.095V31.24H21.905V29.71Z"/>
+            <path d="M18.855 20.57H17.335V22.09H18.855V20.57Z"/>
+            <path d="M18.855 11.43H17.335V12.95H18.855V11.43Z"/>
+            <path d="M17.335 19.05H15.805V20.57H17.335V19.05Z"/>
+            <path d="M9.71501 19.05V14.47H14.285V19.05H15.805V14.47H17.335V12.95H6.66501V14.47H8.19501V19.05H9.71501Z"/>
+            <path d="M17.335 11.43V9.90001H15.805V8.38001H17.335V3.81001H15.805V2.28001H14.285V0.76001H9.71501V2.28001H8.20001V3.81001H6.67001V8.38001H8.20001V9.90001H6.67001V11.43H17.335ZM11.235 3.81001H12.765V5.33001H14.285V6.86001H12.765V5.33001H11.235V3.81001Z"/>
+            <path d="M8.19501 19.05H6.66501V20.57H8.19501V19.05Z"/>
+            <path d="M6.66502 20.57H5.14502V22.09H6.66502V20.57Z"/>
+            <path d="M6.66502 11.43H5.14502V12.95H6.66502V11.43Z"/>
+            <path d="M5.145 25.14V22.09H3.615V25.14H2.095V26.66H21.905V25.14H20.385V22.09H18.855V25.14H5.145Z"/>
+            <path d="M2.09501 26.66H0.575012V29.71H2.09501V26.66Z"/>
+            </svg>
+          </div>
+          <div id="ticTacToe" class="card cur-carousel-position">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 28 29">
+              <path d="M 12 -1 L 12 13 L -1 13 L -1 15 L 12 15 L 12 28 L 14 28 L 14 15 L 27 15 L 27 13 L 14 13 L 14 -1 L 12 -1 Z M 7 10 V 9 H 6 V 8 H 4 V 9 H 3 V 10 H 1 V 8 H 2 V 7 H 3 V 5 H 2 V 4 H 1 V 2 H 3 V 3 H 4 V 4 H 6 V 3 H 7 V 2 H 9 V 4 H 8 V 5 H 7 V 7 H 8 V 8 H 9 V 10 H 7 Z M 19 19 H 23 V 20 H 24 V 24 L 23 24 L 23 25 H 19 V 24 H 18 V 20 L 19 20 L 19 19 M 18 17 L 18 18 L 17 18 L 17 19 L 16 19 V 25 L 17 25 L 17 26 L 18 26 L 18 27 H 24 L 24 26 L 25 26 L 25 25 L 26 25 V 19 L 25 19 L 25 18 L 24 18 L 24 17 Z"/>
+            </svg>
+          </div>
+          <div id="shuffle" class="card right-carousel-position">
+            <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-rotate-clockwise">
+              <path d="M22 11V12H21V13H20V14H19V15H17V14H16V13H15V12H14V11H17V9H16V7H15V6H13V5H9V6H7V7H6V9H5V13H6V15H7V16H9V17H13V16H16V18H14V19H8V18H6V17H5V16H4V14H3V8H4V6H5V5H6V4H8V3H14V4H16V5H17V6H18V8H19V11H22Z" />
+            </svg>
+          </div>
+          <div id="rockPaperScissors" class="card hidden">
+            <svg viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.62 9.72V11.24H23.67V15.81H25.19V5.14H23.67V9.72H20.62Z"/>
+              <path d="M22.14 18.86H6.90999V17.34H5.37999V18.86H3.85999V23.43H25.19V18.86H23.67V15.81H22.14V18.86ZM22.14 21.91H19.1V20.38H22.14V21.91Z"/>
+              <path d="M23.67 3.62H22.14V5.14H23.67V3.62Z" />
+              <path d="M19.1 9.72H20.62V3.62H22.14V2.1H19.1V9.72Z"/>
+              <path d="M19.1 9.72H16.05V11.24H19.1V9.72Z"/>
+              <path d="M13 11.24H8.42999V12.76H13V11.24Z"/>
+              <path d="M9.94997 5.14H8.42997V6.67H11.48V2.1H14.53V6.67H11.48V8.19H13V11.24H14.53V9.72H16.05V2.1H19.1V0.57H6.90997V2.1H9.94997V5.14Z"/>
+              <path d="M8.42997 9.72H6.90997V11.24H8.42997V9.72Z"/>
+              <path d="M8.42999 5.14V3.62H6.90999V2.1H5.37999V3.62H3.85999V5.14H8.42999Z"/>
+              <path d="M5.37999 15.81H3.85999V17.34H5.37999V15.81Z"/>
+              <path d="M3.86003 12.76H2.34003V15.81H3.86003V12.76Z"/>
+              <path d="M3.86003 5.14H2.34003V6.67H3.86003V5.14Z"/>
+              <path d="M2.34 6.67H0.809998V12.76H2.34V6.67Z"/>
+            </svg>
+          </div>
+          <div id="battleship" class="card hidden">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1138_109144)">
+                <path d="M32 6.10001H28.95V7.62001H32V6.10001Z"/>
+                <path d="M30.47 10.67H28.95V12.19H30.47V10.67Z"/>
+                <path d="M30.47 1.51999H28.95V3.04999H30.47V1.51999Z"/>
+                <path d="M28.95 9.14001H27.42V10.67H28.95V9.14001Z"/>
+                <path d="M28.95 3.04999H27.42V4.56999H28.95V3.04999Z"/>
+                <path d="M25.9 6.10001H24.38V9.14001H25.9V6.10001Z"/>
+                <path d="M25.9 0H24.38V3.05H25.9V0Z"/>
+                <path d="M24.38 9.14001H19.8V10.67H24.38V9.14001Z"/>
+                <path d="M22.85 3.04999H21.33V4.56999H22.85V3.04999Z"/>
+                <path d="M21.33 1.51999H19.8V3.04999H21.33V1.51999Z"/>
+                <path d="M19.8 7.62H18.28V9.14H19.8V7.62Z"/>
+                <path d="M18.28 6.10001H16.76V7.62001H18.28V6.10001Z"/>
+                <path d="M16.76 4.57001H12.19V6.10001H16.76V4.57001Z"/>
+                <path d="M10.66 9.14001H7.61V12.19H4.57V13.71H3.04V15.24H1.52V18.29H0V24.38H1.52V27.43H3.04V28.95H4.57V30.48H7.61V32H15.23V30.48H18.28V28.95H19.8V27.43H21.33V24.38H22.85V18.29H21.33V15.24H19.8V13.71H18.28V12.19H15.23V9.14001H12.19V6.10001H10.66V9.14001ZM15.23 15.24H16.76V16.76H18.28V18.29H19.8V24.38H18.28V18.29H16.76V16.76H15.23V15.24ZM15.23 25.9H16.76V27.43H15.23V25.9Z"/>
+              </g>
+            </svg>
+          </div>
+          <div id="snake" class="card hidden">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999" xml:space="preserve">
+            <g>
+                  <g>
+                    <path d="M229.309,15.499c-2.748-5.158-9.155-7.11-14.312-4.364c-0.936,0.499-1.863,1.013-2.78,1.542c-5.062,2.92-6.799,9.39-3.88,14.452c1.957,3.396,5.516,5.296,9.174,5.296c1.793,0,3.611-0.456,5.276-1.417c0.711-0.411,1.429-0.809,2.156-1.196C230.102,27.065,232.055,20.656,229.309,15.499z" />
+                  </g>
+              </g>
+              <g>
+                  <g>
+                    <path d="M457.765,407.911c7.734-9.428,11.941-21.14,11.941-33.5c0-24.425-16.639-45.027-39.174-51.093c7.777-9.432,12.008-21.172,12.008-33.571c0-29.183-23.736-52.924-52.912-52.924h-16.317H314.65h-44.314V105.825h117.225c0.164,0.007,0.325,0.024,0.491,0.024h41.044c5.844,0,10.58-4.737,10.58-10.58s-4.737-10.58-10.58-10.58h-30.463V24.733C398.632,11.095,387.536,0,373.899,0H259.717c-5.844,0-10.58,4.737-10.58,10.58c0,5.844,4.737,10.58,10.58,10.58h114.181c1.969,0,3.572,1.603,3.572,3.572v59.931H259.754c-5.844,0-10.58,4.737-10.58,10.58v141.579h-51.822h-11.694v-24.974h20.915c5.844,0,10.58-4.737,10.58-10.58s-4.737-10.58-10.58-10.58h-20.915v-29.393h20.915c5.844,0,10.58-4.737,10.58-10.58c0-5.844-4.737-10.581-10.58-10.581h-20.915v-29.38h20.915c5.844,0,10.58-4.737,10.58-10.581c0-5.844-4.737-10.58-10.58-10.58H185.87c1.003-13.444,5.604-26.229,13.463-37.269c3.389-4.761,2.277-11.367-2.483-14.755s-11.367-2.278-14.755,2.483c-11.512,16.171-17.596,35.242-17.596,55.153v141.616h-25.808h-16.317c-14.13,0-27.418,5.505-37.406,15.493c-10,9.983-15.506,23.276-15.506,37.432c0,12.725,4.517,24.413,12.03,33.552c-8.879,2.368-17.024,7.026-23.697,13.7c-9.994,9.995-15.499,23.282-15.499,37.413c0,12.692,4.494,24.353,11.969,33.481c-8.997,2.342-17.249,7.034-23.998,13.782c-9.994,9.995-15.499,23.282-15.499,37.412c0,29.177,23.736,52.913,52.912,52.913h376.644c14.13,0,27.418-5.505,37.412-15.499c9.994-9.995,15.499-23.282,15.499-37.414C497.235,434.555,480.451,413.875,457.765,407.911z M99.923,267.286c5.998-5.998,13.97-9.302,22.45-9.302h5.737v18.199c0,5.844,4.737,10.58,10.58,10.58s10.58-4.737,10.58-10.58v-18.199h37.5v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.581-4.737,10.581-10.58v-18.199h37.488v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.58-4.737,10.58-10.58v-18.199h37.488v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.581-4.737,10.581-10.58v-18.199h37.5v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.58-4.737,10.58-10.58v-18.199h5.737c17.507,0,31.751,14.25,31.751,31.764c0,8.489-3.301,16.459-9.302,22.45c-5.998,5.998-13.97,9.302-22.45,9.302h-47.812h-58.648h-58.661h-58.648h-43.484c-17.508,0-31.751-14.243-31.751-31.751C90.622,281.251,93.923,273.276,99.923,267.286z M72.758,351.962c5.998-5.998,13.97-9.302,22.45-9.302h1.407v18.199c0,5.844,4.737,10.581,10.58,10.581c5.844,0,10.581-4.737,10.581-10.581V342.66h4.598h32.903v18.199c0,5.844,4.737,10.581,10.58,10.581s10.58-4.737,10.58-10.581V342.66h37.488v18.199c0,5.844,4.737,10.581,10.58,10.581s10.58-4.737,10.58-10.581V342.66h37.5v18.199c0,5.844,4.737,10.581,10.58,10.581c5.844,0,10.58-4.737,10.58-10.581V342.66h37.488v18.199c0,5.844,4.737,10.581,10.58,10.581c5.844,0,10.58-4.737,10.58-10.581V342.66h37.232h0.269v18.199c0,5.844,4.737,10.581,10.58,10.581c5.844,0,10.581-4.737,10.581-10.581V342.66h5.737c17.508,0,31.751,14.243,31.751,31.751c0,8.487-3.303,16.464-9.302,22.462c-5.998,5.998-13.97,9.302-22.45,9.302h-43.483H314.65h-58.649h-58.648h-58.661H95.207c-17.507,0-31.751-14.25-31.751-31.764C63.456,365.932,66.759,357.96,72.758,351.962zM466.772,481.538c-5.998,5.998-13.97,9.302-22.45,9.302H67.678c-17.508,0-31.751-14.243-31.751-31.752c0-8.479,3.303-16.452,9.302-22.45c5.998-5.998,13.97-9.302,22.45-9.302h1.783v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.58-4.737,10.58-10.58v-18.199h4.585h32.903v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.581-4.737,10.581-10.58v-18.199h37.5v18.199c0,5.844,4.737,10.58,10.58,10.58s10.58-4.737,10.58-10.58v-18.199h37.488v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.581-4.737,10.581-10.58v-18.199h37.488v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.58-4.737,10.58-10.58v-18.199h37.5v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.581-4.737,10.581-10.58v-18.199h32.903h4.585v18.199c0,5.844,4.737,10.58,10.58,10.58c5.844,0,10.58-4.737,10.58-10.58v-18.199h1.783c17.507,0,31.751,14.243,31.751,31.751C476.075,467.566,472.77,475.54,466.772,481.538z" />
+                  </g>
+              </g>
+              <g>
+                  <g>
+                      <path d="M313.46,37.865h-10.848c-5.844,0-10.581,4.737-10.581,10.58s4.737,10.58,10.581,10.58h10.848c5.844,0,10.581-4.737,10.581-10.58S319.304,37.865,313.46,37.865z" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div id="connectFour" class="card hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 35 32">
+            <path d="M 2 2 L 2 1 L 5 1 L 5 2 L 6 2 L 6 5 L 5 5 L 5 6 L 2 6 L 2 5 L 1 5 L 1 2 L 2 2 M 2 8 L 2 7 L 5 7 L 5 8 L 6 8 L 6 11 L 5 11 L 5 12 L 2 12 L 2 11 L 1 11 L 1 8 L 2 8 M 14 8 L 14 7 L 17 7 L 17 8 L 18 8 L 18 11 L 17 11 L 17 12 L 14 12 L 14 11 L 13 11 L 13 8 L 14 8 M 2 14 L 2 13 L 5 13 L 5 14 L 6 14 L 6 17 L 5 17 L 5 18 L 2 18 L 2 17 L 1 17 L 1 14 L 2 14 M 8 14 L 8 13 L 11 13 L 11 14 L 12 14 L 12 17 L 11 17 L 11 18 L 8 18 L 8 17 L 7 17 L 7 14 L 8 14 M 14 14 L 14 13 L 17 13 L 17 14 L 18 14 L 18 17 L 17 17 L 17 18 L 14 18 L 14 17 L 13 17 L 13 14 L 14 14 M 26 14 L 26 13 L 29 13 L 29 14 L 30 14 L 30 17 L 29 17 L 29 18 L 26 18 L 26 17 L 25 17 L 25 14 L 26 14 M 2 20 L 2 19 L 5 19 L 5 20 L 6 20 L 6 23 L 5 23 L 5 24 L 2 24 L 2 23 L 1 23 L 1 20 L 2 20 M 8 20 L 8 19 L 11 19 L 11 20 L 12 20 L 12 23 L 11 23 L 11 24 L 8 24 L 8 23 L 7 23 L 7 20 L 8 20 M 14 20 L 14 19 L 17 19 L 17 20 L 18 20 L 18 23 L 17 23 L 17 24 L 14 24 L 14 23 L 13 23 L 13 20 L 14 20 M 26 20 L 26 19 L 29 19 L 29 20 L 30 20 L 30 23 L 29 23 L 29 24 L 26 24 L 26 23 L 25 23 L 25 20 L 26 20 M -1 27 L 32 27 L 32 26 L 33 26 L 33 -1 L 32 -1 L 32 -2 L -1 -2 L -1 -1 L -2 -1 L -2 26 L -1 26 L -1 27 M 0 25 L 0 0 L 31 0 L 31 25 L 0 25 M 1 27 L 1 30 L 7 30 L 7 27 M 30 27 L 30 30 L 24 30 L 24 27"/>
+          </svg>
+          </div>
+          <div id="blackjack" class="card hidden">
+            <svg viewBox="0 0 30 32" xmlns="http://www.w3.org/2000/svg">
+              <path d="M29.475 6.10001H27.945V12.19H29.475V6.10001Z"/>
+              <path d="M27.945 12.19H26.425V16.76H27.945V12.19Z"/>
+              <path d="M26.425 16.76H24.905V22.86H26.425V16.76Z"/>
+              <path d="M24.905 22.86H23.375V28.95H24.905V22.86Z"/>
+              <path d="M21.855 6.09999H27.945V4.56999H21.855V1.51999H20.325V30.48H23.375V28.95H21.855V6.09999Z"/>
+              <path d="M20.325 30.48H2.04498V32H20.325V30.48Z"/>
+              <path d="M18.805 25.9H17.285V28.95H18.805V25.9Z"/>
+              <path d="M12.715 9.14001H9.66499V12.19H6.61499V15.24H9.66499V16.76H8.13499V18.29H14.235V16.76H12.715V15.24H15.755V12.19H12.715V9.14001Z"/>
+              <path d="M5.095 3.04999H3.565V6.09999H5.095V3.04999Z"/>
+              <path d="M20.325 0H2.04498V1.52H20.325V0Z"/>
+              <path d="M2.04499 1.51999H0.524994V30.48H2.04499V1.51999Z"/>
+            </svg>              
+          </div>
+
+          <!-- Carousel Scroll Buttons -->
+          <button class="carousel-scroll-btn carousel-left-scroll small-btn" id="left-scroll-btn" value="right" aria-label="scroll left">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.0135498 9.77539 9.14 13.72">
+              <path d="M1.53355 15.8754H0.0135498V17.3954H1.53355V15.8754ZM3.05355 14.3454H1.53355V15.8754H3.05355V14.3454ZM3.05355 17.3954H1.53355V18.9254H3.05355V17.3954ZM4.58354 12.8254H3.05354V14.3454H4.58354V12.8254ZM4.58354 18.9254H3.05354V20.4454H4.58354V18.9254ZM6.10356 11.3054H4.58356V12.8254H6.10356V11.3054ZM6.10356 20.4454H4.58356V21.9654H6.10356V20.4454ZM7.62355 9.77539H6.10355V11.3054H7.62355V9.77539ZM9.15355 11.3054H7.62355V21.9654H9.15355V11.3054ZM7.62355 21.9654H6.10355V23.4954H7.62355V21.9654Z"/>
+            </svg>
+          </button>
+          <button class="carousel-scroll-btn carousel-right-scroll small-btn" id="right-scroll-btn" value="left" aria-label="scroll right">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="22.8636 9.7754 9.15 13.72">
+              <path d="m 25.9136 9.7754 h -1.52 v 1.53 h 1.52 v -1.53 z m 0 12.19 h -1.52 v 1.53 h 1.52 v -1.53 z m 1.5199 -10.66 h -1.52 v 1.52 h 1.52 v -1.52 z m 0 9.14 h -1.52 v 1.52 h 1.52 v -1.52 z m 1.53 -7.62 h -1.53 v 1.52 h 1.53 v -1.52 z m 0 6.1 h -1.53 v 1.52 h 1.53 v -1.52 z m 3.0501 -3.05 h -1.53 v 1.52 h 1.53 v -1.52 z m -1.5301 1.52 h -1.52 v 1.53 h 1.52 v -1.53 z m -6.0899 -6.09 h -1.53 v 10.66 h 1.53 v -10.66 z m 6.0899 3.04 h -1.52 v 1.53 h 1.52 v -1.53 z"/>
+            </svg>
+          </button>
+
+          <div class="cur-selected-card-indication">
+          </div>
+        </div>
+        <!-- Play Selected Game Button -->
+        <button class="select-game-btn big-button" id="select-game-btn">SELECT</button>
+      </nav>
+    </main>
+  </body>
+</html>
